@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: my-application
+  webflux:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"       
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: admin
+    password: admin123!
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      #ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
