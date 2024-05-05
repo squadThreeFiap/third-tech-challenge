@@ -26,9 +26,9 @@ import org.springframework.data.domain.Pageable;
 
 import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
-import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
+import external.database.jpa.entities.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
-import br.com.fiap.squad3.restaurantfinder.repository.UsuarioRepository;
+import external.database.jpa.repository.UsuarioRepository;
 
 public class UsuarioEntityServiceImplTest {
 

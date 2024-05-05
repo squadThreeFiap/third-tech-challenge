@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model;
+package external.database.jpa.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

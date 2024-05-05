@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
-import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
+import external.database.jpa.entities.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteFiltroDto;
 import jakarta.persistence.criteria.Predicate;
 

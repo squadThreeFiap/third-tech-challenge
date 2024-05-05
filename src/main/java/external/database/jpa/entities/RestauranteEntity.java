@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model;
+package external.database.jpa.entities;
 
 import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
 import jakarta.persistence.*;

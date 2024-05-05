@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.service.impl;
 import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
-import br.com.fiap.squad3.restaurantfinder.repository.UsuarioRepository;
+import external.database.jpa.repository.UsuarioRepository;
 import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

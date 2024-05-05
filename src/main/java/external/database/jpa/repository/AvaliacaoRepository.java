@@ -1,6 +1,6 @@
-package br.com.fiap.squad3.restaurantfinder.repository;
+package external.database.jpa.repository;
 
-import br.com.fiap.squad3.restaurantfinder.model.AvaliacaoEntity;
+import external.database.jpa.entities.AvaliacaoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
-import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
+import external.database.jpa.entities.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 
 public interface UsuarioConverter {

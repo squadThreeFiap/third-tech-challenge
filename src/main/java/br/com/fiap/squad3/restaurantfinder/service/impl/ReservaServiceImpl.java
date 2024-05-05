@@ -2,12 +2,12 @@ package br.com.fiap.squad3.restaurantfinder.service.impl;
 
 import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
-import br.com.fiap.squad3.restaurantfinder.model.ReservaEntity;
+import external.database.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
 import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
-import br.com.fiap.squad3.restaurantfinder.repository.ReservaRepository;
-import br.com.fiap.squad3.restaurantfinder.repository.RestauranteRepository;
-import br.com.fiap.squad3.restaurantfinder.repository.UsuarioRepository;
+import external.database.jpa.repository.ReservaRepository;
+import external.database.jpa.repository.RestauranteRepository;
+import external.database.jpa.repository.UsuarioRepository;
 import br.com.fiap.squad3.restaurantfinder.service.ReservaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
