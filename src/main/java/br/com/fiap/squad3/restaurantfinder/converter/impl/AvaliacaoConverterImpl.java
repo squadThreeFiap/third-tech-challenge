@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.converter.impl;
 import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
 import external.database.jpa.entities.AvaliacaoEntity;
 import external.database.jpa.entities.RestauranteEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.AvaliacaoDto;
+import external.restapi.dtos.AvaliacaoDto;
 import org.springframework.stereotype.Component;
 
 @Component

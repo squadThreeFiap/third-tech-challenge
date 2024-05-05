@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
 import external.database.jpa.entities.RestauranteEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteFiltroDto;
+import external.restapi.dtos.RestauranteFiltroDto;
 import jakarta.persistence.criteria.Predicate;
 
 public class RestauranteSpecification {

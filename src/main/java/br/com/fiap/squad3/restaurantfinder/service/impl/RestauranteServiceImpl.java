@@ -2,7 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.service.impl;
 
 import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.RestauranteConverter;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteDto;
+import external.restapi.dtos.RestauranteDto;
 import external.database.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.service.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;

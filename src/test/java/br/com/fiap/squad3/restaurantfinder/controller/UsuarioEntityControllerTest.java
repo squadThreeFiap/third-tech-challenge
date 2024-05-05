@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
+import external.restapi.dtos.UsuarioDto;
 import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;
 
 public class UsuarioEntityControllerTest {

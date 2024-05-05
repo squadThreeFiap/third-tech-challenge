@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
 import external.database.jpa.entities.RestauranteEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteDto;
+import external.restapi.dtos.RestauranteDto;
 
 public interface RestauranteConverter {
     RestauranteDto toDto(RestauranteEntity restauranteEntity);

@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model.dtos;
+package external.restapi.dtos;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;

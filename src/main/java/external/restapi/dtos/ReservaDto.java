@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model.dtos;
+package external.restapi.dtos;
 
 import br.com.fiap.squad3.restaurantfinder.model.enums.StatusReserva;
 import io.swagger.v3.oas.annotations.media.Schema;

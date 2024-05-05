@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.AvaliacaoDto;
+import external.restapi.dtos.AvaliacaoDto;
 import external.database.jpa.repository.AvaliacaoRepository;
 import external.database.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.service.AvaliacaoService;

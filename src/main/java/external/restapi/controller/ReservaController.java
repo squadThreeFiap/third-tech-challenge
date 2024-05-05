@@ -1,6 +1,6 @@
 package external.restapi.controller;
 
-import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
+import external.restapi.dtos.ReservaDto;
 import br.com.fiap.squad3.restaurantfinder.service.impl.ReservaServiceImpl;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

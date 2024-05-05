@@ -1,6 +1,6 @@
 package external.restapi.controller;
 
-import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
+import external.restapi.dtos.UsuarioDto;
 import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.transaction.Transactional;

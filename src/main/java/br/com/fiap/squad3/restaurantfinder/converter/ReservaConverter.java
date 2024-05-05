@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.converter;
 import external.database.jpa.entities.ReservaEntity;
 import external.database.jpa.entities.RestauranteEntity;
 import external.database.jpa.entities.UsuarioEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
+import external.restapi.dtos.ReservaDto;
 
 public interface ReservaConverter {
     ReservaDto toDto(ReservaEntity reservaEntity);

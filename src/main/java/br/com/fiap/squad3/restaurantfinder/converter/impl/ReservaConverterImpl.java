@@ -4,7 +4,7 @@ import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
 import external.database.jpa.entities.ReservaEntity;
 import external.database.jpa.entities.RestauranteEntity;
 import external.database.jpa.entities.UsuarioEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
+import external.restapi.dtos.ReservaDto;
 import org.springframework.stereotype.Component;
 
 @Component

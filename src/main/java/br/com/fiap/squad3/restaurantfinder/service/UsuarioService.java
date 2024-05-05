@@ -1,6 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.service;
 
-import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
+import external.restapi.dtos.UsuarioDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

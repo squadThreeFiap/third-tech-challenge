@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
 import external.database.jpa.entities.UsuarioEntity;
-import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
+import external.restapi.dtos.UsuarioDto;
 
 public interface UsuarioConverter {
     UsuarioDto toDto(UsuarioEntity usuarioEntity);

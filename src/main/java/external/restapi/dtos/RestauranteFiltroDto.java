@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model.dtos;
+package external.restapi.dtos;
 
 public record RestauranteFiltroDto(
         String nome,
