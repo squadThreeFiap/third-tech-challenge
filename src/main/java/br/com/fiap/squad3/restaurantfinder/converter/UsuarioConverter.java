@@ -1,12 +1,12 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
-import br.com.fiap.squad3.restaurantfinder.model.Usuario;
+import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 
 public interface UsuarioConverter {
-    UsuarioDto toDto(Usuario usuario);
+    UsuarioDto toDto(UsuarioEntity usuarioEntity);
 
-    Usuario toEntity(UsuarioDto usuarioDto);
+    UsuarioEntity toEntity(UsuarioDto usuarioDto);
 
-    void updateEntityFromDto(Usuario usuario, UsuarioDto usuarioDto);
+    void updateEntityFromDto(UsuarioEntity usuarioEntity, UsuarioDto usuarioDto);
 }

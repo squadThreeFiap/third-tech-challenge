@@ -1,13 +1,13 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
-import br.com.fiap.squad3.restaurantfinder.model.Avaliacao;
-import br.com.fiap.squad3.restaurantfinder.model.Restaurante;
+import br.com.fiap.squad3.restaurantfinder.model.AvaliacaoEntity;
+import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.AvaliacaoDto;
 
 public interface AvaliacaoConverter {
-    AvaliacaoDto toDto(Avaliacao avaliacao);
+    AvaliacaoDto toDto(AvaliacaoEntity avaliacaoEntity);
 
-    Avaliacao toEntity(AvaliacaoDto avaliacaoDto, Restaurante restaurante);
+    AvaliacaoEntity toEntity(AvaliacaoDto avaliacaoDto, RestauranteEntity restauranteEntity);
 
-    void updateEntityFromDto(Avaliacao avaliacao, AvaliacaoDto avaliacaoDto);
+    void updateEntityFromDto(AvaliacaoEntity avaliacaoEntity, AvaliacaoDto avaliacaoDto);
 }

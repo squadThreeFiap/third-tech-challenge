@@ -26,11 +26,11 @@ import org.springframework.data.domain.Pageable;
 
 import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
-import br.com.fiap.squad3.restaurantfinder.model.Usuario;
+import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 import br.com.fiap.squad3.restaurantfinder.repository.UsuarioRepository;
 
-public class UsuarioServiceImplTest {
+public class UsuarioEntityServiceImplTest {
 
 	@Mock
 	private UsuarioRepository usuarioRepository;
@@ -39,42 +39,42 @@ public class UsuarioServiceImplTest {
 	@InjectMocks
 	private UsuarioServiceImpl usuarioService;
 
-	private Usuario usuario;
+	private UsuarioEntity usuarioEntity;
 	private UsuarioDto usuarioDto;
 
 	@BeforeEach
 	void setUp() {
 		MockitoAnnotations.openMocks(this);
-		usuario = new Usuario(null, "33014076090", "Restaurant Finder", "11", "987654321", "teste@teste.com", null);
+		usuarioEntity = new UsuarioEntity(null, "33014076090", "Restaurant Finder", "11", "987654321", "teste@teste.com", null);
 		usuarioDto = new UsuarioDto(null, "33014076090", "Restaurant Finder", "11", "987654321", "teste@teste.com",
 				null);
 
-		when(usuarioConverter.toEntity(any(UsuarioDto.class))).thenReturn(usuario);
-		when(usuarioConverter.toDto(any(Usuario.class))).thenReturn(usuarioDto);
+		when(usuarioConverter.toEntity(any(UsuarioDto.class))).thenReturn(usuarioEntity);
+		when(usuarioConverter.toDto(any(UsuarioEntity.class))).thenReturn(usuarioDto);
 	}
 
 	
 	@Test
     void saveShouldPersistData() {
         when(usuarioRepository.existsByCpf(anyString())).thenReturn(false);
-        when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
+        when(usuarioRepository.save(any(UsuarioEntity.class))).thenReturn(usuarioEntity);
 
         UsuarioDto savedDto = usuarioService.save(usuarioDto);
 
         assertNotNull(savedDto);
         assertEquals("Restaurant Finder", savedDto.nome());
-        verify(usuarioRepository).save(usuario);
+        verify(usuarioRepository).save(usuarioEntity);
     }
 
 	@Test
     void updateShouldChangeData() {
-	    when(usuarioRepository.findById(anyLong())).thenReturn(Optional.of(usuario));
-	    when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
-	    when(usuarioConverter.toDto(any(Usuario.class))).thenReturn(usuarioDto);
+	    when(usuarioRepository.findById(anyLong())).thenReturn(Optional.of(usuarioEntity));
+	    when(usuarioRepository.save(any(UsuarioEntity.class))).thenReturn(usuarioEntity);
+	    when(usuarioConverter.toDto(any(UsuarioEntity.class))).thenReturn(usuarioDto);
 
 	    UsuarioDto updatedDto = usuarioService.update(1L, usuarioDto);
         assertNotNull(updatedDto);
-        verify(usuarioRepository).save(any(Usuario.class));
+        verify(usuarioRepository).save(any(UsuarioEntity.class));
     }
 
 	@Test
@@ -86,8 +86,8 @@ public class UsuarioServiceImplTest {
 
 	@Test
     void findByIdShouldReturnData() {
-        when(usuarioRepository.findById(anyLong())).thenReturn(Optional.of(usuario));
-        when(usuarioConverter.toDto(any(Usuario.class))).thenReturn(usuarioDto);
+        when(usuarioRepository.findById(anyLong())).thenReturn(Optional.of(usuarioEntity));
+        when(usuarioConverter.toDto(any(UsuarioEntity.class))).thenReturn(usuarioDto);
 
         UsuarioDto foundDto = usuarioService.findById(1L);
 
@@ -97,9 +97,9 @@ public class UsuarioServiceImplTest {
 
 	@Test
 	void findAllShouldReturnPage() {
-		Page<Usuario> page = new PageImpl<>(List.of(usuario));
+		Page<UsuarioEntity> page = new PageImpl<>(List.of(usuarioEntity));
 		when(usuarioRepository.findAll(any(Pageable.class))).thenReturn(page);
-		when(usuarioConverter.toDto(any(Usuario.class))).thenReturn(usuarioDto);
+		when(usuarioConverter.toDto(any(UsuarioEntity.class))).thenReturn(usuarioDto);
 
 		Page<UsuarioDto> dtoPage = usuarioService.findAll(Pageable.unpaged());
 
@@ -137,8 +137,8 @@ public class UsuarioServiceImplTest {
 
 	@Test
 	void findAll_WhenUsersExist_ReturnsPageOfUsers() {
-		Usuario mockUsuario = new Usuario();
-		Page<Usuario> page = new PageImpl<>(Collections.singletonList(mockUsuario));
+		UsuarioEntity mockUsuarioEntity = new UsuarioEntity();
+		Page<UsuarioEntity> page = new PageImpl<>(Collections.singletonList(mockUsuarioEntity));
 		when(usuarioRepository.findAll(any(Pageable.class))).thenReturn(page);
 		assertEquals(1, usuarioService.findAll(Pageable.unpaged()).getTotalElements());
 	}

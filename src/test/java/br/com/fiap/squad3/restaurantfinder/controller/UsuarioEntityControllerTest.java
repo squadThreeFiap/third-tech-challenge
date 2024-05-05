@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;
 
-public class UsuarioControllerTest {
+public class UsuarioEntityControllerTest {
 
     private MockMvc mockMvc;
     private UsuarioService usuarioService;

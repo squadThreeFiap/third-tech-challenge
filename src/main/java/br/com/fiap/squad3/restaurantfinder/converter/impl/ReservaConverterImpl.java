@@ -1,33 +1,33 @@
 package br.com.fiap.squad3.restaurantfinder.converter.impl;
 
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
-import br.com.fiap.squad3.restaurantfinder.model.Reserva;
-import br.com.fiap.squad3.restaurantfinder.model.Restaurante;
-import br.com.fiap.squad3.restaurantfinder.model.Usuario;
+import br.com.fiap.squad3.restaurantfinder.model.ReservaEntity;
+import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
+import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReservaConverterImpl implements ReservaConverter {
     @Override
-    public ReservaDto toDto(Reserva reserva) {
+    public ReservaDto toDto(ReservaEntity reservaEntity) {
         return new ReservaDto(
-                reserva.getId(),
-                reserva.getUsuario().getId(),
-                reserva.getRestaurante().getId(),
-                reserva.getQuantidadePessoas(),
-                reserva.getDataHoraFim(),
-                reserva.getDataHoraInicio(),
-                reserva.getStatus()
+                reservaEntity.getId(),
+                reservaEntity.getUsuarioEntity().getId(),
+                reservaEntity.getRestauranteEntity().getId(),
+                reservaEntity.getQuantidadePessoas(),
+                reservaEntity.getDataHoraFim(),
+                reservaEntity.getDataHoraInicio(),
+                reservaEntity.getStatus()
         );
     }
 
     @Override
-    public Reserva toEntity(ReservaDto reservaDto, Usuario usuario, Restaurante restaurante) {
-        return new Reserva(
+    public ReservaEntity toEntity(ReservaDto reservaDto, UsuarioEntity usuarioEntity, RestauranteEntity restauranteEntity) {
+        return new ReservaEntity(
                 reservaDto.id(),
-                usuario,
-                restaurante,
+                usuarioEntity,
+                restauranteEntity,
                 reservaDto.quantidadePessoas(),
                 reservaDto.dataHoraFim(),
                 reservaDto.dataHoraInicio(),
@@ -36,7 +36,7 @@ public class ReservaConverterImpl implements ReservaConverter {
     }
 
     @Override
-    public void updateEntityFromDto(Reserva reserva, ReservaDto reservaDto) {
+    public void updateEntityFromDto(ReservaEntity reservaEntity, ReservaDto reservaDto) {
 		// TODO: Implement updateEntityFromDto
     }
 }

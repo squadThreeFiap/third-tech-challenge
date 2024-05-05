@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "avaliacoes")
-public class Avaliacao {
+public class AvaliacaoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,5 +27,5 @@ public class Avaliacao {
 
     @ManyToOne
     @JoinColumn(name = "restaurante_id")
-    private Restaurante restaurante;
+    private RestauranteEntity restauranteEntity;
 }

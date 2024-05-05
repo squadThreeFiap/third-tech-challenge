@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.converter.impl;
 
 import br.com.fiap.squad3.restaurantfinder.converter.RestauranteConverter;
-import br.com.fiap.squad3.restaurantfinder.model.Restaurante;
+import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteDto;
 import org.springframework.stereotype.Component;
 
@@ -9,31 +9,31 @@ import org.springframework.stereotype.Component;
 public class RestauranteConverterImpl implements RestauranteConverter {
 
     @Override
-    public RestauranteDto toDto(Restaurante restaurante) {
+    public RestauranteDto toDto(RestauranteEntity restauranteEntity) {
         return new RestauranteDto(
-                restaurante.getId(),
-                restaurante.getCnpjCpf(),
-                restaurante.getNomeFantasia(),
-                restaurante.getDdd(),
-                restaurante.getTelefoneContato(),
-                restaurante.getEmailContato(),
-                restaurante.getCulinaria(),
-                restaurante.getCategoria(),
-                restaurante.getCep(),
-                restaurante.getEndereco(),
-                restaurante.getUf(),
-                restaurante.getCidade(),
-                restaurante.getBairro(),
-                restaurante.getDiasFuncionamentos(),
-                restaurante.getHoraAbertura(),
-                restaurante.getHoraEnceramento(),
-                restaurante.getCapacidade()
+                restauranteEntity.getId(),
+                restauranteEntity.getCnpjCpf(),
+                restauranteEntity.getNomeFantasia(),
+                restauranteEntity.getDdd(),
+                restauranteEntity.getTelefoneContato(),
+                restauranteEntity.getEmailContato(),
+                restauranteEntity.getCulinaria(),
+                restauranteEntity.getCategoria(),
+                restauranteEntity.getCep(),
+                restauranteEntity.getEndereco(),
+                restauranteEntity.getUf(),
+                restauranteEntity.getCidade(),
+                restauranteEntity.getBairro(),
+                restauranteEntity.getDiasFuncionamentos(),
+                restauranteEntity.getHoraAbertura(),
+                restauranteEntity.getHoraEnceramento(),
+                restauranteEntity.getCapacidade()
         );
     }
 
     @Override
-    public Restaurante toEntity(RestauranteDto restauranteDto) {
-        return new Restaurante(
+    public RestauranteEntity toEntity(RestauranteDto restauranteDto) {
+        return new RestauranteEntity(
                 restauranteDto.id(),
                 restauranteDto.cnpjcpf(),
                 restauranteDto.nomeFatasia(),
@@ -55,20 +55,20 @@ public class RestauranteConverterImpl implements RestauranteConverter {
     }
 
     @Override
-    public void updateEntityFromDto(Restaurante restaurante, RestauranteDto restauranteDto) {
-        restaurante.setCnpjCpf(restauranteDto.cnpjcpf());
-        restaurante.setNomeFantasia(restauranteDto.nomeFatasia());
-        restaurante.setTelefoneContato(restauranteDto.telefone());
-        restaurante.setEmailContato(restauranteDto.email());
-        restaurante.setCulinaria(restauranteDto.culinaria());
-        restaurante.setCategoria(restauranteDto.categoria());
-        restaurante.setCep(restauranteDto.cep());
-        restaurante.setEndereco(restauranteDto.endereco());
-        restaurante.setCidade(restauranteDto.cidade());
-        restaurante.setBairro(restauranteDto.bairro());
-        restaurante.setDiasFuncionamentos(restauranteDto.diasFuncionamentos());
-        restaurante.setHoraAbertura(restauranteDto.horaAbertura());
-        restaurante.setHoraEnceramento(restauranteDto.horaEnceramento());
-        restaurante.setCapacidade(restauranteDto.capacidade());
+    public void updateEntityFromDto(RestauranteEntity restauranteEntity, RestauranteDto restauranteDto) {
+        restauranteEntity.setCnpjCpf(restauranteDto.cnpjcpf());
+        restauranteEntity.setNomeFantasia(restauranteDto.nomeFatasia());
+        restauranteEntity.setTelefoneContato(restauranteDto.telefone());
+        restauranteEntity.setEmailContato(restauranteDto.email());
+        restauranteEntity.setCulinaria(restauranteDto.culinaria());
+        restauranteEntity.setCategoria(restauranteDto.categoria());
+        restauranteEntity.setCep(restauranteDto.cep());
+        restauranteEntity.setEndereco(restauranteDto.endereco());
+        restauranteEntity.setCidade(restauranteDto.cidade());
+        restauranteEntity.setBairro(restauranteDto.bairro());
+        restauranteEntity.setDiasFuncionamentos(restauranteDto.diasFuncionamentos());
+        restauranteEntity.setHoraAbertura(restauranteDto.horaAbertura());
+        restauranteEntity.setHoraEnceramento(restauranteDto.horaEnceramento());
+        restauranteEntity.setCapacidade(restauranteDto.capacidade());
     }
 }

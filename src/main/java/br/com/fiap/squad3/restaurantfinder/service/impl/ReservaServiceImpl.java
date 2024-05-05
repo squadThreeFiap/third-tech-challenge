@@ -2,7 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.service.impl;
 
 import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
-import br.com.fiap.squad3.restaurantfinder.model.Reserva;
+import br.com.fiap.squad3.restaurantfinder.model.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
 import br.com.fiap.squad3.restaurantfinder.model.enums.DiasSemanas;
 import br.com.fiap.squad3.restaurantfinder.repository.ReservaRepository;
@@ -45,28 +45,28 @@ public class ReservaServiceImpl implements ReservaService {
         var restaurante = restauranteRepository.findById(reservaDto.restaurante_id())
                 .orElseThrow(() -> new ControllerNotFoundException("Restaurante não encontrado"));
 
-        Reserva reserva = reservaConverter.toEntity(reservaDto, usuario, restaurante);
+        ReservaEntity reservaEntity = reservaConverter.toEntity(reservaDto, usuario, restaurante);
 
         // Verifica se o usuário já tem uma reserva no mesmo horário
-        if (reservaRepository.existsByUsuarioIdAndDataHoraInicio(reserva.getUsuario().getId(), reserva.getDataHoraInicio())) {
+        if (reservaRepository.existsByUsuarioIdAndDataHoraInicio(reservaEntity.getUsuarioEntity().getId(), reservaEntity.getDataHoraInicio())) {
             throw new IllegalArgumentException("Usuário já possui uma reserva neste horário");
         }
 
         // Verifica se o dia da reserva é permitido pelo restaurante
-        DayOfWeek dayOfWeek = reserva.getDataHoraInicio().getDayOfWeek();
+        DayOfWeek dayOfWeek = reservaEntity.getDataHoraInicio().getDayOfWeek();
         if (!restaurante.getDiasFuncionamentos().contains(DiasSemanas.valueOf(dayOfWeek.name()))) {
             throw new IllegalArgumentException("Restaurante não funciona neste dia");
         }
 
         // Atualiza a capacidade do restaurante
-        if (restaurante.getCapacidade() < reserva.getQuantidadePessoas()) {
+        if (restaurante.getCapacidade() < reservaEntity.getQuantidadePessoas()) {
             throw new IllegalArgumentException("Capacidade do restaurante excedida");
         }
-        restaurante.setCapacidade(restaurante.getCapacidade() - reserva.getQuantidadePessoas());
+        restaurante.setCapacidade(restaurante.getCapacidade() - reservaEntity.getQuantidadePessoas());
         restauranteRepository.save(restaurante);
 
-        Reserva novaReserva = reservaRepository.save(reserva);
-        return reservaConverter.toDto(novaReserva);
+        ReservaEntity novaReservaEntity = reservaRepository.save(reservaEntity);
+        return reservaConverter.toDto(novaReservaEntity);
     }
 
     @Override

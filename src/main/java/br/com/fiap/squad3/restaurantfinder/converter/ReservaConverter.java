@@ -1,14 +1,14 @@
 package br.com.fiap.squad3.restaurantfinder.converter;
 
-import br.com.fiap.squad3.restaurantfinder.model.Reserva;
-import br.com.fiap.squad3.restaurantfinder.model.Restaurante;
-import br.com.fiap.squad3.restaurantfinder.model.Usuario;
+import br.com.fiap.squad3.restaurantfinder.model.ReservaEntity;
+import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
+import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
 
 public interface ReservaConverter {
-    ReservaDto toDto(Reserva reserva);
+    ReservaDto toDto(ReservaEntity reservaEntity);
 
-    Reserva toEntity(ReservaDto reservaDto, Usuario usuario, Restaurante restaurante);
+    ReservaEntity toEntity(ReservaDto reservaDto, UsuarioEntity usuarioEntity, RestauranteEntity restauranteEntity);
 
-    void updateEntityFromDto(Reserva reserva, ReservaDto reservaDto);
+    void updateEntityFromDto(ReservaEntity reservaEntity, ReservaDto reservaDto);
 }

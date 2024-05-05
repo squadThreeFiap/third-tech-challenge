@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "reservas")
-public class Reserva {
+public class ReservaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,12 +21,12 @@ public class Reserva {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private UsuarioEntity usuarioEntity;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurante_id")
-    private Restaurante restaurante;
+    private RestauranteEntity restauranteEntity;
 
     @NotNull
     private Integer quantidadePessoas;

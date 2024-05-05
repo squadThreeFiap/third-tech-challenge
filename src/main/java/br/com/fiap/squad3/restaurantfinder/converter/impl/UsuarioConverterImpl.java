@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.converter.impl;
 
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
-import br.com.fiap.squad3.restaurantfinder.model.Usuario;
+import br.com.fiap.squad3.restaurantfinder.model.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 import org.springframework.stereotype.Component;
 
@@ -9,21 +9,21 @@ import org.springframework.stereotype.Component;
 public class UsuarioConverterImpl implements UsuarioConverter {
 
     @Override
-    public UsuarioDto toDto(Usuario usuario) {
+    public UsuarioDto toDto(UsuarioEntity usuarioEntity) {
         return new UsuarioDto(
-                usuario.getId(),
-                usuario.getCpf(),
-                usuario.getNome(),
-                usuario.getDdd(),
-                usuario.getTelefone(),
-                usuario.getEmail(),
-                usuario.getDataCadastro()
+                usuarioEntity.getId(),
+                usuarioEntity.getCpf(),
+                usuarioEntity.getNome(),
+                usuarioEntity.getDdd(),
+                usuarioEntity.getTelefone(),
+                usuarioEntity.getEmail(),
+                usuarioEntity.getDataCadastro()
         );
     }
 
     @Override
-    public Usuario toEntity(UsuarioDto usuarioDto) {
-        return new Usuario(
+    public UsuarioEntity toEntity(UsuarioDto usuarioDto) {
+        return new UsuarioEntity(
                 usuarioDto.id(),
                 usuarioDto.cpf(),
                 usuarioDto.nome(),
@@ -35,10 +35,10 @@ public class UsuarioConverterImpl implements UsuarioConverter {
     }
 
     @Override
-    public void updateEntityFromDto(Usuario usuario, UsuarioDto usuarioDto) {
-        usuario.setNome(usuarioDto.nome());
-        usuario.setDdd(usuarioDto.ddd());
-        usuario.setTelefone(usuarioDto.telefone());
-        usuario.setEmail(usuarioDto.email());
+    public void updateEntityFromDto(UsuarioEntity usuarioEntity, UsuarioDto usuarioDto) {
+        usuarioEntity.setNome(usuarioDto.nome());
+        usuarioEntity.setDdd(usuarioDto.ddd());
+        usuarioEntity.setTelefone(usuarioDto.telefone());
+        usuarioEntity.setEmail(usuarioDto.email());
     }
 }

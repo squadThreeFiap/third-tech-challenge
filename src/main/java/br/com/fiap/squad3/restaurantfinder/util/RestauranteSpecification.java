@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
-import br.com.fiap.squad3.restaurantfinder.model.Restaurante;
+import br.com.fiap.squad3.restaurantfinder.model.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.RestauranteFiltroDto;
 import jakarta.persistence.criteria.Predicate;
 
 public class RestauranteSpecification {
 
-    public static Specification<Restaurante> comFiltro(RestauranteFiltroDto filtro) {
+    public static Specification<RestauranteEntity> comFiltro(RestauranteFiltroDto filtro) {
         return (root, query, criteriaBuilder) -> {
             var predicates = new ArrayList<Predicate>();
 
