@@ -1,4 +1,4 @@
-package external.restapi.controller.exception;
+package external.restapi.controllers.exception;
 
 public class ControllerNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;

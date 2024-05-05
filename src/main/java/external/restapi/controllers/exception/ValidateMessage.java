@@ -1,4 +1,4 @@
-package external.restapi.controller.exception;
+package external.restapi.controllers.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

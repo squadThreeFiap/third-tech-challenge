@@ -1,10 +1,10 @@
-package external.restapi.service.impl;
+package external.restapi.services.impl;
 
-import external.restapi.controller.exception.ControllerNotFoundException;
+import external.restapi.controllers.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.RestauranteConverter;
 import external.restapi.dtos.RestauranteDto;
 import external.database.jpa.repository.RestauranteRepository;
-import external.restapi.service.RestauranteService;
+import external.restapi.services.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

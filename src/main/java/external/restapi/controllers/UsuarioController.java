@@ -1,7 +1,7 @@
-package external.restapi.controller;
+package external.restapi.controllers;
 
 import external.restapi.dtos.UsuarioDto;
-import external.restapi.service.UsuarioService;
+import external.restapi.services.UsuarioService;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

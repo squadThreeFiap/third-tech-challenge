@@ -1,7 +1,7 @@
-package external.restapi.controller;
+package external.restapi.controllers;
 
 import external.restapi.dtos.ReservaDto;
-import external.restapi.service.impl.ReservaServiceImpl;
+import external.restapi.services.impl.ReservaServiceImpl;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

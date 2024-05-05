@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import external.restapi.service.impl.UsuarioServiceImpl;
+import external.restapi.services.impl.UsuarioServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -25,7 +25,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import external.restapi.controller.exception.ControllerNotFoundException;
+import external.restapi.controllers.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
 import external.database.jpa.entities.UsuarioEntity;
 import external.restapi.dtos.UsuarioDto;

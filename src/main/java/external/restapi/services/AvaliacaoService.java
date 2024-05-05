@@ -1,4 +1,4 @@
-package external.restapi.service;
+package external.restapi.services;
 
 import external.restapi.dtos.AvaliacaoDto;
 import org.springframework.data.domain.Page;

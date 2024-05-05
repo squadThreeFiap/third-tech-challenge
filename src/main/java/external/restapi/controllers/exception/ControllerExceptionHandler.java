@@ -1,4 +1,4 @@
-package external.restapi.controller.exception;
+package external.restapi.controllers.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

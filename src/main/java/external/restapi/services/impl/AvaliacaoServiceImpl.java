@@ -1,12 +1,12 @@
-package external.restapi.service.impl;
+package external.restapi.services.impl;
 
-import external.restapi.service.AvaliacaoService;
+import external.restapi.services.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import external.restapi.controller.exception.ControllerNotFoundException;
+import external.restapi.controllers.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
 import external.restapi.dtos.AvaliacaoDto;
 import external.database.jpa.repository.AvaliacaoRepository;
