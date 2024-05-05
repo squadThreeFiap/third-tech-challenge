@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.service.impl;
+package external.restapi.service.impl;
 
 import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
@@ -8,7 +8,7 @@ import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
 import external.database.jpa.repository.ReservaRepository;
 import external.database.jpa.repository.RestauranteRepository;
 import external.database.jpa.repository.UsuarioRepository;
-import br.com.fiap.squad3.restaurantfinder.service.ReservaService;
+import external.restapi.service.ReservaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

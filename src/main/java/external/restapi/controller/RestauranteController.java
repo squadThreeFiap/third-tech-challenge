@@ -1,7 +1,7 @@
 package external.restapi.controller;
 
 import external.restapi.dtos.RestauranteDto;
-import br.com.fiap.squad3.restaurantfinder.service.impl.RestauranteServiceImpl;
+import external.restapi.service.impl.RestauranteServiceImpl;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

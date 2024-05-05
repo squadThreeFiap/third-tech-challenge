@@ -1,5 +1,6 @@
-package br.com.fiap.squad3.restaurantfinder.service.impl;
+package external.restapi.service.impl;
 
+import external.restapi.service.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +11,6 @@ import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
 import external.restapi.dtos.AvaliacaoDto;
 import external.database.jpa.repository.AvaliacaoRepository;
 import external.database.jpa.repository.RestauranteRepository;
-import br.com.fiap.squad3.restaurantfinder.service.AvaliacaoService;
 
 @Service
 public class AvaliacaoServiceImpl implements AvaliacaoService {

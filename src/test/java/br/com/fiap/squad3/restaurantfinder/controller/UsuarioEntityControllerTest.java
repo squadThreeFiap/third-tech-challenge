@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import external.restapi.dtos.UsuarioDto;
-import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;
+import external.restapi.service.UsuarioService;
 
 public class UsuarioEntityControllerTest {
 

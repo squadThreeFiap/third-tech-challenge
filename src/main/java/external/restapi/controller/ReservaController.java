@@ -1,7 +1,7 @@
 package external.restapi.controller;
 
 import external.restapi.dtos.ReservaDto;
-import br.com.fiap.squad3.restaurantfinder.service.impl.ReservaServiceImpl;
+import external.restapi.service.impl.ReservaServiceImpl;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

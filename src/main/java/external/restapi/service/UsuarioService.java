@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.service;
+package external.restapi.service;
 
 import external.restapi.dtos.UsuarioDto;
 import org.springframework.data.domain.Page;
