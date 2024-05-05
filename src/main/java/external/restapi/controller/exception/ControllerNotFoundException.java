@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.controller.exception;
+package external.restapi.controller.exception;
 
 public class ControllerNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;

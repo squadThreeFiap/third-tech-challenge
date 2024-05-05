@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.controller.exception;
+package external.restapi.controller.exception;
 
 import lombok.Getter;
 

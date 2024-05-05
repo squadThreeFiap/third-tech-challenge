@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.configuration;
+package external.restapi.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

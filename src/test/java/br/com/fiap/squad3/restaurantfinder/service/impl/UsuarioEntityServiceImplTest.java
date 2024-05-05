@@ -24,7 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
+import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.UsuarioConverter;
 import external.database.jpa.entities.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;

@@ -1,6 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.service.impl;
 
-import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
+import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
 import external.database.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;

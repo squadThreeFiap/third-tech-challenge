@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.controller;
+package external.restapi.controller;
 
 import br.com.fiap.squad3.restaurantfinder.model.dtos.UsuarioDto;
 import br.com.fiap.squad3.restaurantfinder.service.UsuarioService;

@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFoundException;
+import external.restapi.controller.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.AvaliacaoDto;
 import external.database.jpa.repository.AvaliacaoRepository;

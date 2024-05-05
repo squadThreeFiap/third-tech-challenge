@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.controller.exception;
+package external.restapi.controller.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
