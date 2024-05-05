@@ -4,7 +4,7 @@ import br.com.fiap.squad3.restaurantfinder.controller.exception.ControllerNotFou
 import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
 import br.com.fiap.squad3.restaurantfinder.model.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.model.dtos.ReservaDto;
-import br.com.fiap.squad3.restaurantfinder.model.enums.DiasSemanas;
+import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
 import br.com.fiap.squad3.restaurantfinder.repository.ReservaRepository;
 import br.com.fiap.squad3.restaurantfinder.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.repository.UsuarioRepository;
@@ -54,7 +54,7 @@ public class ReservaServiceImpl implements ReservaService {
 
         // Verifica se o dia da reserva é permitido pelo restaurante
         DayOfWeek dayOfWeek = reservaEntity.getDataHoraInicio().getDayOfWeek();
-        if (!restaurante.getDiasFuncionamentos().contains(DiasSemanas.valueOf(dayOfWeek.name()))) {
+        if (!restaurante.getDiasFuncionamentos().contains(DiaSemana.valueOf(dayOfWeek.name()))) {
             throw new IllegalArgumentException("Restaurante não funciona neste dia");
         }
 

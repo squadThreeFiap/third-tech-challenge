@@ -1,6 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.model;
 
-import br.com.fiap.squad3.restaurantfinder.model.enums.DiasSemanas;
+import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -57,7 +57,7 @@ public class RestauranteEntity {
     private String bairro;
 
     @Enumerated(EnumType.STRING)
-    private List<DiasSemanas> diasFuncionamentos;
+    private List<DiaSemana> diasFuncionamentos;
 
     @NotNull
     private LocalTime horaAbertura;

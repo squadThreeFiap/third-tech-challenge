@@ -1,6 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.model.dtos;
 
-import br.com.fiap.squad3.restaurantfinder.model.enums.DiasSemanas;
+import br.com.fiap.squad3.restaurantfinder.model.enums.DiaSemana;
 import br.com.fiap.squad3.restaurantfinder.util.CpfCnpj;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.EnumType;
@@ -59,7 +59,7 @@ public record RestauranteDto(
         String bairro,
 
         @Enumerated(EnumType.STRING)
-        List<DiasSemanas> diasFuncionamentos,
+        List<DiaSemana> diasFuncionamentos,
 
         @Schema(example = "07:00:00")
         LocalTime horaAbertura,
