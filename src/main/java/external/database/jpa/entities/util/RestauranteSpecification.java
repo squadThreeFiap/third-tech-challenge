@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.util;
+package external.database.jpa.entities.util;
 
 import java.util.ArrayList;
 
