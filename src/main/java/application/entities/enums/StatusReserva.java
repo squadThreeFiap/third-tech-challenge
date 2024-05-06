@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.model.enums;
+package application.entities.enums;
 
 public enum StatusReserva {
     AGUARDANDO,

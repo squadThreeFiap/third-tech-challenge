@@ -1,6 +1,6 @@
 package external.restapi.dtos;
 
-import br.com.fiap.squad3.restaurantfinder.model.enums.StatusReserva;
+import application.entities.enums.StatusReserva;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

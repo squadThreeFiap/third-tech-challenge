@@ -1,6 +1,6 @@
 package external.database.jpa.entities;
 
-import br.com.fiap.squad3.restaurantfinder.model.enums.StatusReserva;
+import application.entities.enums.StatusReserva;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
