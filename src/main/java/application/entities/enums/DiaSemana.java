@@ -2,10 +2,10 @@ package application.entities.enums;
 
 public enum DiaSemana {
     SEGUNDA,
-    TERÇA,
+    TERCA,
     QUARTA,
     QUINTA,
     SEXTA,
-    SÁBADO,
+    SABADO,
     DOMINGO;
 }
