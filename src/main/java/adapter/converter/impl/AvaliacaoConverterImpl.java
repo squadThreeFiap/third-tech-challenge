@@ -1,6 +1,6 @@
-package br.com.fiap.squad3.restaurantfinder.converter.impl;
+package adapter.converter.impl;
 
-import br.com.fiap.squad3.restaurantfinder.converter.AvaliacaoConverter;
+import adapter.converter.AvaliacaoConverter;
 import external.database.jpa.entities.AvaliacaoEntity;
 import external.database.jpa.entities.RestauranteEntity;
 import external.restapi.dtos.AvaliacaoDto;

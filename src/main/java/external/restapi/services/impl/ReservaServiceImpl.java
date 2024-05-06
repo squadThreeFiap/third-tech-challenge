@@ -1,7 +1,7 @@
 package external.restapi.services.impl;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import br.com.fiap.squad3.restaurantfinder.converter.ReservaConverter;
+import adapter.converter.ReservaConverter;
 import external.database.jpa.entities.ReservaEntity;
 import external.restapi.dtos.ReservaDto;
 import application.entities.enums.DiaSemana;

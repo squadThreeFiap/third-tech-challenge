@@ -1,7 +1,7 @@
 package external.restapi.services.impl;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import br.com.fiap.squad3.restaurantfinder.converter.RestauranteConverter;
+import adapter.converter.RestauranteConverter;
 import external.restapi.dtos.RestauranteDto;
 import external.database.jpa.repository.RestauranteRepository;
 import external.restapi.services.RestauranteService;
