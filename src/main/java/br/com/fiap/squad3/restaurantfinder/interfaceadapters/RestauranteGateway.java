@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.application.gateways;
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 

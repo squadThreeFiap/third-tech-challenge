@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
-import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.RestauranteGateway;
 
 import java.time.Duration;
 
