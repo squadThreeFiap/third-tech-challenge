@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.external.jpa.converter;
+package br.com.fiap.squad3.restaurantfinder.external.restapi.converter;
 
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
