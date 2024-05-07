@@ -1,8 +1,8 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.services.impl;
 
-import br.com.fiap.squad3.restaurantfinder.external.converter.AvaliacaoConverter;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.repository.AvaliacaoRepository;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.repository.RestauranteRepository;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.converter.AvaliacaoConverter;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.AvaliacaoRepository;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.controllers.exception.ControllerNotFoundException;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.AvaliacaoDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.services.AvaliacaoService;

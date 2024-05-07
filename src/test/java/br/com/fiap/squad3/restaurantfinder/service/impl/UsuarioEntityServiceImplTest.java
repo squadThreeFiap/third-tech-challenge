@@ -26,10 +26,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import br.com.fiap.squad3.restaurantfinder.external.restapi.controllers.exception.ControllerNotFoundException;
-import br.com.fiap.squad3.restaurantfinder.external.converter.UsuarioConverter;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.entities.UsuarioEntity;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.converter.UsuarioConverter;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.UsuarioEntity;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.UsuarioDto;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.repository.UsuarioRepository;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
 
 public class UsuarioEntityServiceImplTest {
 

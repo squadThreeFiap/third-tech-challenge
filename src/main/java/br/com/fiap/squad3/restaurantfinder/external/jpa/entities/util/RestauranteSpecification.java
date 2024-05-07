@@ -1,11 +1,11 @@
-package br.com.fiap.squad3.restaurantfinder.external.database.jpa.entities.util;
+package br.com.fiap.squad3.restaurantfinder.external.jpa.entities.util;
 
 import java.util.ArrayList;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.entities.RestauranteEntity;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteFiltroDto;
 import jakarta.persistence.criteria.Predicate;
 

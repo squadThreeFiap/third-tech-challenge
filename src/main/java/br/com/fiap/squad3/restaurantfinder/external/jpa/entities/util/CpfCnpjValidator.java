@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.external.database.jpa.entities.util;
+package br.com.fiap.squad3.restaurantfinder.external.jpa.entities.util;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

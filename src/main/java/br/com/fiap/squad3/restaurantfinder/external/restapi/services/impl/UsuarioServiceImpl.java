@@ -2,9 +2,9 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.services.impl;
 
 import br.com.fiap.squad3.restaurantfinder.external.restapi.services.UsuarioService;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.controllers.exception.ControllerNotFoundException;
-import br.com.fiap.squad3.restaurantfinder.external.converter.UsuarioConverter;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.converter.UsuarioConverter;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.UsuarioDto;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.repository.UsuarioRepository;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

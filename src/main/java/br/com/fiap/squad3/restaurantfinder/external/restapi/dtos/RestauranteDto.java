@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.dtos;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.DiaSemana;
-import br.com.fiap.squad3.restaurantfinder.external.database.jpa.entities.util.CpfCnpj;
+import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.util.CpfCnpj;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
