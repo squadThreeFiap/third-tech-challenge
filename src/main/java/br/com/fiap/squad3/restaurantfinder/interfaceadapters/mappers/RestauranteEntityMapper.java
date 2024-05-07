@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.interfaceadapters;
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
@@ -6,7 +6,7 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 
 public class RestauranteEntityMapper {
-    RestauranteEntity toEntity(Restaurante restauranteDomainObj) {
+    public RestauranteEntity toEntity(Restaurante restauranteDomainObj) {
         return new RestauranteEntity(
                 restauranteDomainObj.getNome(),
                 restauranteDomainObj.getTipoCozinha(),
@@ -22,7 +22,7 @@ public class RestauranteEntityMapper {
         );
     }
 
-    Restaurante toDomainObj(RestauranteEntity restauranteEntity) {
+    public Restaurante toDomainObj(RestauranteEntity restauranteEntity) {
         return new Restaurante(
                 restauranteEntity.getId(),
                 restauranteEntity.getNome(),

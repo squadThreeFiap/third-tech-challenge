@@ -1,8 +1,10 @@
-package br.com.fiap.squad3.restaurantfinder.interfaceadapters;
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositories;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
+import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers.RestauranteEntityMapper;
 
 public class RestauranteRepositoryGateway implements RestauranteGateway {
     private final RestauranteRepository restauranteRepository;
