@@ -1,4 +1,4 @@
-package adapter.converter;
+package external.converter;
 
 import external.database.jpa.entities.ReservaEntity;
 import external.database.jpa.entities.RestauranteEntity;

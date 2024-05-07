@@ -1,7 +1,7 @@
 package external.restapi.services.impl;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import adapter.converter.RestauranteConverter;
+import external.converter.RestauranteConverter;
 import external.restapi.dtos.RestauranteDto;
 import external.database.jpa.repository.RestauranteRepository;
 import external.restapi.services.RestauranteService;

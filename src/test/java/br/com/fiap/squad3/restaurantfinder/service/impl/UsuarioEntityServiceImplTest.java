@@ -26,7 +26,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import adapter.converter.UsuarioConverter;
+import external.converter.UsuarioConverter;
 import external.database.jpa.entities.UsuarioEntity;
 import external.restapi.dtos.UsuarioDto;
 import external.database.jpa.repository.UsuarioRepository;

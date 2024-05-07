@@ -1,6 +1,6 @@
-package adapter.converter.impl;
+package external.converter.impl;
 
-import adapter.converter.AvaliacaoConverter;
+import external.converter.AvaliacaoConverter;
 import external.database.jpa.entities.AvaliacaoEntity;
 import external.database.jpa.entities.RestauranteEntity;
 import external.restapi.dtos.AvaliacaoDto;

@@ -1,6 +1,6 @@
-package adapter.converter.impl;
+package external.converter.impl;
 
-import adapter.converter.ReservaConverter;
+import external.converter.ReservaConverter;
 import external.database.jpa.entities.ReservaEntity;
 import external.database.jpa.entities.RestauranteEntity;
 import external.database.jpa.entities.UsuarioEntity;

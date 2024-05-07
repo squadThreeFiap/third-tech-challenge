@@ -1,6 +1,6 @@
-package adapter.converter.impl;
+package external.converter.impl;
 
-import adapter.converter.UsuarioConverter;
+import external.converter.UsuarioConverter;
 import external.database.jpa.entities.UsuarioEntity;
 import external.restapi.dtos.UsuarioDto;
 import org.springframework.stereotype.Component;

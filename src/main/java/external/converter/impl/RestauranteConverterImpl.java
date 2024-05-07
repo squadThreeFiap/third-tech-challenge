@@ -1,6 +1,6 @@
-package adapter.converter.impl;
+package external.converter.impl;
 
-import adapter.converter.RestauranteConverter;
+import external.converter.RestauranteConverter;
 import external.database.jpa.entities.RestauranteEntity;
 import external.restapi.dtos.RestauranteDto;
 import org.springframework.stereotype.Component;

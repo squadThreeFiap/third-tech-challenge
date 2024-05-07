@@ -1,7 +1,7 @@
 package external.restapi.services.impl;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import adapter.converter.UsuarioConverter;
+import external.converter.UsuarioConverter;
 import external.restapi.dtos.UsuarioDto;
 import external.database.jpa.repository.UsuarioRepository;
 import external.restapi.services.UsuarioService;

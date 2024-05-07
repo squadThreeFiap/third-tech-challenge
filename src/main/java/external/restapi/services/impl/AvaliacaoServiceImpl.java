@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import external.restapi.controllers.exception.ControllerNotFoundException;
-import adapter.converter.AvaliacaoConverter;
+import external.converter.AvaliacaoConverter;
 import external.restapi.dtos.AvaliacaoDto;
 import external.database.jpa.repository.AvaliacaoRepository;
 import external.database.jpa.repository.RestauranteRepository;
