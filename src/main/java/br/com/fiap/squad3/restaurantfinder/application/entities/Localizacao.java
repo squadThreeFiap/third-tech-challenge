@@ -1,18 +1,40 @@
 package br.com.fiap.squad3.restaurantfinder.application.entities;
 
 public class Localizacao {
+    private String cep;
     private String uf;
     private String cidade;
     private String bairro;
     private String logradouro;
     private Integer numero;
 
-    public Localizacao(String uf, String cidade, String bairro, String logradouro, Integer numero) {
+    public Localizacao(String cep, String uf, String cidade, String bairro, String logradouro, Integer numero) {
+        this.setCep(cep);
         this.setUf(uf);
         this.setCidade(cidade);
         this.setBairro(bairro);
         this.setLogradouro(logradouro);
         this.numero = numero;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        IllegalArgumentException cepInvalido = new IllegalArgumentException("CEP deve ser informado com 8 dígitos.");
+
+        try {
+            Integer.parseInt(cep);
+        } catch (Exception ex) {
+            throw cepInvalido;
+        }
+
+        if (cep.isBlank() || cep.length() != 8) {
+            throw cepInvalido;
+        }
+
+        this.cep = cep;
     }
 
     public String getUf() {

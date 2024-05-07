@@ -1,13 +1,13 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.converter;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
-import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponse;
 
 public interface RestauranteConverter {
-    RestauranteDto toDto(Restaurante restauranteEntity);
+    RestauranteResponse toResponse(Restaurante restaurante);
 
-    Restaurante toEntity(RestauranteDto restauranteDto);
+    Restaurante toDomain(RestauranteRequest restauranteRequest);
 
-    void updateEntityFromDto(Restaurante restauranteEntity, RestauranteDto restauranteDto);
+    void updateEntityFromDto(Restaurante restaurante, RestauranteRequest restauranteRequest);
 }

@@ -6,8 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalTime;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,26 +21,10 @@ public class RestauranteEntity {
     private Long id;
 
     @NotNull
-    @Column(unique = true)
-    private String cnpjCpf;
+    private String nome;
 
     @NotNull
-    private String nomeFantasia;
-
-    @NotNull
-    private String ddd;
-
-    @NotNull
-    private String telefoneContato;
-
-    @NotNull
-    private String emailContato;
-
-    @NotNull
-    private String culinaria;
-
-    @NotNull
-    private String categoria;
+    private String tipoCozinha;
 
     @NotNull
     private String cep;
@@ -56,8 +41,10 @@ public class RestauranteEntity {
     @NotNull
     private String bairro;
 
+    private Integer numero;
+
     @Enumerated(EnumType.STRING)
-    private List<DiaSemana> diasFuncionamentos;
+    private Set<DiaSemana> diasFuncionamentos;
 
     @NotNull
     private LocalTime horaAbertura;
@@ -67,4 +54,30 @@ public class RestauranteEntity {
 
     @NotNull
     private int capacidade;
+
+    public RestauranteEntity(
+            String nome,
+            String tipoCozinha,
+            String cep,
+            String endereco,
+            String uf,
+            String cidade,
+            String bairro,
+            Set<DiaSemana> diasFuncionamentos,
+            LocalTime horaAbertura,
+            LocalTime horaEnceramento,
+            int capacidade
+    ) {
+        this.nome = nome;
+        this.tipoCozinha = tipoCozinha;
+        this.cep = cep;
+        this.endereco = endereco;
+        this.uf = uf;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.diasFuncionamentos = diasFuncionamentos;
+        this.horaAbertura = horaAbertura;
+        this.horaEnceramento = horaEnceramento;
+        this.capacidade = capacidade;
+    }
 }

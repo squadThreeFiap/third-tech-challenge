@@ -3,25 +3,25 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
+import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 
 import java.time.Duration;
 
 public class CadastroRestauranteUseCase {
     private static final int TEMPO_FUNCIONAMENTO_MINIMO = 3;
 
-    public static Restaurante cadastrar(
-            Restaurante restaurante,
-            Localizacao localizacao,
-            Funcionamento funcionamento
-    ) {
+    private RestauranteGateway restauranteGateway;
+
+    public CadastroRestauranteUseCase(RestauranteGateway restauranteGateway) {
+        this.restauranteGateway = restauranteGateway;
+    }
+
+    public Restaurante cadastrar(Restaurante restaurante) {
         validarDadosRestaurante(restaurante);
-        validarDadosLocalizacao(localizacao);
-        validarDadosFuncionamento(funcionamento);
+        validarDadosLocalizacao(restaurante.getLocalizacao());
+        validarDadosFuncionamento(restaurante.getFuncionamento());
 
-        restaurante.setLocalizacao(localizacao);
-        restaurante.setFuncionamento(funcionamento);
-
-        return restaurante;
+        return this.restauranteGateway.cadastrar(restaurante);
     }
 
     private static void validarDadosRestaurante(Restaurante restaurante) {

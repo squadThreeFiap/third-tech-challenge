@@ -13,7 +13,7 @@ class LocalizacaoTest {
 
     @BeforeEach
     void setUp() {
-        localizacao = new Localizacao("SP", "São Paulo", "Centro", "Rua Principal", 123);
+        localizacao = new Localizacao("12345678","SP", "São Paulo", "Centro", "Rua Principal", 123);
     }
 
     @Test
@@ -21,9 +21,9 @@ class LocalizacaoTest {
         assertThrows(IllegalArgumentException.class, () -> localizacao.setUf(null));
         assertThrows(IllegalArgumentException.class, () -> localizacao.setUf(" "));
         assertThrows(IllegalArgumentException.class, () -> localizacao.setUf("ABC"));
-        assertThrows(IllegalArgumentException.class, () -> new Localizacao(null, "Cidade", "Bairro", "Logradouro", 1));
-        assertThrows(IllegalArgumentException.class, () -> new Localizacao("", "Cidade", "Bairro", "Logradouro", 1));
-        assertThrows(IllegalArgumentException.class, () -> new Localizacao("ABC", "Cidade", "Bairro", "Logradouro", 1));
+        assertThrows(IllegalArgumentException.class, () -> new Localizacao("12345678",null, "Cidade", "Bairro", "Logradouro", 1));
+        assertThrows(IllegalArgumentException.class, () -> new Localizacao("12345678","", "Cidade", "Bairro", "Logradouro", 1));
+        assertThrows(IllegalArgumentException.class, () -> new Localizacao("12345678","ABC", "Cidade", "Bairro", "Logradouro", 1));
     }
 
     @Test

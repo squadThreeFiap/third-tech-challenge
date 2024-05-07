@@ -11,7 +11,7 @@ class RestauranteTest {
 
     @BeforeEach
     void setUp() {
-        restaurante = new Restaurante("Restaurante", "Tipo Cozinha", 100);
+        restaurante = new Restaurante(1L, "Restaurante", "Tipo Cozinha", 100);
     }
 
     @Test

@@ -2,6 +2,8 @@ package br.com.fiap.squad3.restaurantfinder.application.entities;
 
 public class Restaurante {
     private final int CAPACIDADE_MINIMA = 1;
+
+    private Long id;
     private String nome;
     private String tipoCozinha;
     private Integer capacidade;
@@ -9,29 +11,41 @@ public class Restaurante {
     private Funcionamento funcionamento;
 
     public Restaurante(
+            Long id,
             String nome,
             String tipoCozinha,
             Integer capacidade
     ) {
-        this.nome = nome;
-        this.tipoCozinha = tipoCozinha;
-        this.capacidade = capacidade;
+        this.id = id;
+        this.setNome(nome);
+        this.setTipoCozinha(tipoCozinha);
+        this.setCapacidade(capacidade);
         this.localizacao = null;
         this.funcionamento = null;
     }
 
     public Restaurante(
+            Long id,
             String nome,
             String tipoCozinha,
             Integer capacidade,
             Localizacao localizacao,
             Funcionamento funcionamento
     ) {
-        this.nome = nome;
-        this.tipoCozinha = tipoCozinha;
-        this.capacidade = capacidade;
+        this.id = id;
+        this.setNome(nome);
+        this.setTipoCozinha(tipoCozinha);
+        this.setCapacidade(capacidade);
         this.localizacao = localizacao;
         this.funcionamento = funcionamento;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
