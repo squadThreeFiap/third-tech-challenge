@@ -1,5 +1,6 @@
 package application.entities;
 
+import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

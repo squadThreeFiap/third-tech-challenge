@@ -1,6 +1,7 @@
 package application.entities;
 
-import application.entities.enums.DiaSemana;
+import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
+import br.com.fiap.squad3.restaurantfinder.application.entities.enums.DiaSemana;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

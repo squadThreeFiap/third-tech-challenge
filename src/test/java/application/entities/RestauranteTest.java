@@ -1,12 +1,8 @@
 package application.entities;
 
-import application.entities.enums.DiaSemana;
+import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
