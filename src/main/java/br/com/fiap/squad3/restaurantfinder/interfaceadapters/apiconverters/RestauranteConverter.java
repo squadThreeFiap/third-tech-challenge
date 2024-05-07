@@ -1,4 +1,4 @@
-package br.com.fiap.squad3.restaurantfinder.external.restapi.converter;
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters.apiconverters;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;

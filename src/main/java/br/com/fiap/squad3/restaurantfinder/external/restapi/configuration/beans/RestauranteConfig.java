@@ -4,7 +4,7 @@ import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRe
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers.RestauranteEntityMapper;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositories.RestauranteRepositoryGateway;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways.RestauranteRepositoryGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
