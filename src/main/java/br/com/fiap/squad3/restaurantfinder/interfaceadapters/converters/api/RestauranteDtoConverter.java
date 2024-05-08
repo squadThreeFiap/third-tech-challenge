@@ -8,7 +8,6 @@ import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequ
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponseDto;
 import org.springframework.stereotype.Component;
 
-@Component
 public class RestauranteDtoConverter {
 
     public RestauranteResponseDto toResponse(Restaurante restaurante) {
