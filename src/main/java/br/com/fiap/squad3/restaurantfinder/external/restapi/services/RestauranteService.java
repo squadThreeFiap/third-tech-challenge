@@ -1,18 +1,18 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.services;
 
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface RestauranteService {
-    RestauranteRequest save(RestauranteRequest restauranteRequest);
+    RestauranteRequestDto save(RestauranteRequestDto restauranteRequestDto);
 
-    RestauranteRequest update(Long id, RestauranteRequest restauranteRequest);
+    RestauranteRequestDto update(Long id, RestauranteRequestDto restauranteRequestDto);
 
     void delete(Long id);
 
-    Page<RestauranteRequest> findAll(Pageable pageable);
+    Page<RestauranteRequestDto> findAll(Pageable pageable);
 
-    RestauranteRequest findById(Long id);
+    RestauranteRequestDto findById(Long id);
 
 }

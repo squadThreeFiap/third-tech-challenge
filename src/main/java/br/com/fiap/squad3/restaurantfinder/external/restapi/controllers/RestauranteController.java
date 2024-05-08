@@ -3,8 +3,8 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.RestauranteDtoConverter;
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponse;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponseDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -30,10 +30,10 @@ public class RestauranteController {
 
     @PostMapping()
     @Transactional
-    public ResponseEntity<RestauranteResponse> save(@Valid @RequestBody RestauranteRequest restauranteRequest) {
-        Restaurante restaurante = restauranteDtoConverter.toDomain(restauranteRequest);
+    public ResponseEntity<RestauranteResponseDto> save(@Valid @RequestBody RestauranteRequestDto restauranteRequestDto) {
+        Restaurante restaurante = restauranteDtoConverter.toDomain(restauranteRequestDto);
         Restaurante restauranteCadastrado = cadastroRestauranteUseCase.cadastrar(restaurante);
-        RestauranteResponse restauranteCadastradoResponse = restauranteDtoConverter.toResponse(restauranteCadastrado);
+        RestauranteResponseDto restauranteCadastradoResponse = restauranteDtoConverter.toResponse(restauranteCadastrado);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restauranteCadastradoResponse);
     }

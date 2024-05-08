@@ -4,58 +4,58 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;
-import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponse;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RestauranteDtoConverter {
 
-    public RestauranteResponse toResponse(Restaurante restaurante) {
-        return new RestauranteResponse(restaurante.getId());
+    public RestauranteResponseDto toResponse(Restaurante restaurante) {
+        return new RestauranteResponseDto(restaurante.getId());
     }
 
-    public Restaurante toDomain(RestauranteRequest restauranteRequest) {
+    public Restaurante toDomain(RestauranteRequestDto restauranteRequestDto) {
         return new Restaurante(
-                restauranteRequest.id(),
-                restauranteRequest.nome(),
-                restauranteRequest.tipoCozinha(),
-                restauranteRequest.capacidade(),
+                restauranteRequestDto.id(),
+                restauranteRequestDto.nome(),
+                restauranteRequestDto.tipoCozinha(),
+                restauranteRequestDto.capacidade(),
                 new Localizacao(
-                        restauranteRequest.cep(),
-                        restauranteRequest.uf(),
-                        restauranteRequest.cidade(),
-                        restauranteRequest.bairro(),
-                        restauranteRequest.endereco(),
-                        restauranteRequest.numero()
+                        restauranteRequestDto.cep(),
+                        restauranteRequestDto.uf(),
+                        restauranteRequestDto.cidade(),
+                        restauranteRequestDto.bairro(),
+                        restauranteRequestDto.endereco(),
+                        restauranteRequestDto.numero()
                 ),
                 new Funcionamento(
-                        restauranteRequest.diasFuncionamentos(),
-                        restauranteRequest.horaAbertura(),
-                        restauranteRequest.horaEnceramento()
+                        restauranteRequestDto.diasFuncionamentos(),
+                        restauranteRequestDto.horaAbertura(),
+                        restauranteRequestDto.horaEnceramento()
                 )
         );
     }
 
-    public void updateEntityFromDto(Restaurante restaurante, RestauranteRequest restauranteRequest) {
-        restaurante.setNome(restauranteRequest.nome());
-        restaurante.setTipoCozinha(restauranteRequest.tipoCozinha());
-        restaurante.setCapacidade(restauranteRequest.capacidade());
+    public void updateEntityFromDto(Restaurante restaurante, RestauranteRequestDto restauranteRequestDto) {
+        restaurante.setNome(restauranteRequestDto.nome());
+        restaurante.setTipoCozinha(restauranteRequestDto.tipoCozinha());
+        restaurante.setCapacidade(restauranteRequestDto.capacidade());
 
         Localizacao localizacao = new Localizacao(
-                restauranteRequest.cep(),
-                restauranteRequest.uf(),
-                restauranteRequest.cidade(),
-                restauranteRequest.bairro(),
-                restauranteRequest.endereco(),
-                restauranteRequest.numero()
+                restauranteRequestDto.cep(),
+                restauranteRequestDto.uf(),
+                restauranteRequestDto.cidade(),
+                restauranteRequestDto.bairro(),
+                restauranteRequestDto.endereco(),
+                restauranteRequestDto.numero()
         );
         restaurante.setLocalizacao(localizacao);
 
         Funcionamento funcionamento = new Funcionamento(
-                restauranteRequest.diasFuncionamentos(),
-                restauranteRequest.horaAbertura(),
-                restauranteRequest.horaEnceramento()
+                restauranteRequestDto.diasFuncionamentos(),
+                restauranteRequestDto.horaAbertura(),
+                restauranteRequestDto.horaEnceramento()
         );
         restaurante.setFuncionamento(funcionamento);
     }

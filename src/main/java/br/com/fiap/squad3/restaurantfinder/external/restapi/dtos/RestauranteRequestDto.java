@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalTime;
 import java.util.Set;
 
-public record RestauranteRequest(
+public record RestauranteRequestDto(
         @Schema(hidden = true)
         Long id,
 
