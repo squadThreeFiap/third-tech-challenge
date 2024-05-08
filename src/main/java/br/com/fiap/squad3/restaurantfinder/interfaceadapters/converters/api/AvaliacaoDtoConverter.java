@@ -7,8 +7,7 @@
 //import org.springframework.stereotype.Component;
 //
 //@Component
-//public class AvaliacaoConverterImpl implements AvaliacaoConverter {
-//    @Override
+//public class AvaliacaoConverterImpl {
 //    public AvaliacaoDto toDto(AvaliacaoEntity avaliacaoEntity) {
 //        return new AvaliacaoDto(
 //                avaliacaoEntity.getId(),
@@ -19,7 +18,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public AvaliacaoEntity toEntity(AvaliacaoDto avaliacaoDto, RestauranteEntity restauranteEntity) {
 //        return new AvaliacaoEntity(
 //                avaliacaoDto.id(),
@@ -30,7 +28,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public void updateEntityFromDto(AvaliacaoEntity avaliacaoEntity, AvaliacaoDto avaliacaoDto) {
 //        avaliacaoEntity.setComentario(avaliacaoDto.comentario());
 //        avaliacaoEntity.setNota(avaliacaoDto.nota());

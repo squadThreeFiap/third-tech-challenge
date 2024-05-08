@@ -8,8 +8,7 @@
 //import org.springframework.stereotype.Component;
 //
 //@Component
-//public class ReservaConverterImpl implements ReservaConverter {
-//    @Override
+//public class ReservaConverterImpl {
 //    public ReservaDto toDto(ReservaEntity reservaEntity) {
 //        return new ReservaDto(
 //                reservaEntity.getId(),
@@ -22,7 +21,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public ReservaEntity toEntity(ReservaDto reservaDto, UsuarioEntity usuarioEntity, RestauranteEntity restauranteEntity) {
 //        return new ReservaEntity(
 //                reservaDto.id(),
@@ -35,7 +33,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public void updateEntityFromDto(ReservaEntity reservaEntity, ReservaDto reservaDto) {
 //		// TODO: Implement updateEntityFromDto
 //    }

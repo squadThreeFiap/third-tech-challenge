@@ -2,7 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.apiconverters.RestauranteConverter;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.RestauranteDtoConverter;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequest;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponse;
 import jakarta.transaction.Transactional;
@@ -18,22 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/restaurante")
 public class RestauranteController {
     private final CadastroRestauranteUseCase cadastroRestauranteUseCase;
-    private final RestauranteConverter restauranteConverter;
+    private final RestauranteDtoConverter restauranteDtoConverter;
 
     public RestauranteController(
             CadastroRestauranteUseCase cadastroRestauranteUseCase,
-            RestauranteConverter restauranteConverter
+            RestauranteDtoConverter restauranteDtoConverter
     ) {
         this.cadastroRestauranteUseCase = cadastroRestauranteUseCase;
-        this.restauranteConverter = restauranteConverter;
+        this.restauranteDtoConverter = restauranteDtoConverter;
     }
 
     @PostMapping()
     @Transactional
     public ResponseEntity<RestauranteResponse> save(@Valid @RequestBody RestauranteRequest restauranteRequest) {
-        Restaurante restaurante = restauranteConverter.toDomain(restauranteRequest);
+        Restaurante restaurante = restauranteDtoConverter.toDomain(restauranteRequest);
         Restaurante restauranteCadastrado = cadastroRestauranteUseCase.cadastrar(restaurante);
-        RestauranteResponse restauranteCadastradoResponse = restauranteConverter.toResponse(restauranteCadastrado);
+        RestauranteResponse restauranteCadastradoResponse = restauranteDtoConverter.toResponse(restauranteCadastrado);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restauranteCadastradoResponse);
     }

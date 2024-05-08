@@ -6,9 +6,8 @@
 //import org.springframework.stereotype.Component;
 //
 //@Component
-//public class UsuarioConverterImpl implements UsuarioConverter {
+//public class UsuarioConverterImpl {
 //
-//    @Override
 //    public UsuarioDto toDto(UsuarioEntity usuarioEntity) {
 //        return new UsuarioDto(
 //                usuarioEntity.getId(),
@@ -21,7 +20,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public UsuarioEntity toEntity(UsuarioDto usuarioDto) {
 //        return new UsuarioEntity(
 //                usuarioDto.id(),
@@ -34,7 +32,6 @@
 //        );
 //    }
 //
-//    @Override
 //    public void updateEntityFromDto(UsuarioEntity usuarioEntity, UsuarioDto usuarioDto) {
 //        usuarioEntity.setNome(usuarioDto.nome());
 //        usuarioEntity.setDdd(usuarioDto.ddd());

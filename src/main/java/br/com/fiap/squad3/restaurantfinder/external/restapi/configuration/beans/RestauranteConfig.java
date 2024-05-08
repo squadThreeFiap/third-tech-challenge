@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.configuration.beans
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers.RestauranteEntityMapper;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.RestauranteEntityConverter;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways.RestauranteRepositoryGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +18,13 @@ public class RestauranteConfig {
     @Bean
     RestauranteGateway restauranteGateway(
             RestauranteRepository restauranteRepository,
-            RestauranteEntityMapper restauranteEntityMapper
+            RestauranteEntityConverter restauranteEntityConverter
     ) {
-        return new RestauranteRepositoryGateway(restauranteRepository, restauranteEntityMapper);
+        return new RestauranteRepositoryGateway(restauranteRepository, restauranteEntityConverter);
     }
 
     @Bean
-    RestauranteEntityMapper restauranteEntityMapper() {
-        return new RestauranteEntityMapper();
+    RestauranteEntityConverter restauranteEntityMapper() {
+        return new RestauranteEntityConverter();
     }
 }

@@ -4,24 +4,24 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers.RestauranteEntityMapper;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.RestauranteEntityConverter;
 
 public class RestauranteRepositoryGateway implements RestauranteGateway {
     private final RestauranteRepository restauranteRepository;
-    private final RestauranteEntityMapper restauranteEntityMapper;
+    private final RestauranteEntityConverter restauranteEntityConverter;
 
     public RestauranteRepositoryGateway(
             RestauranteRepository restauranteRepository,
-            RestauranteEntityMapper restauranteEntityMapper
+            RestauranteEntityConverter restauranteEntityConverter
     ) {
         this.restauranteRepository = restauranteRepository;
-        this.restauranteEntityMapper = restauranteEntityMapper;
+        this.restauranteEntityConverter = restauranteEntityConverter;
     }
 
     @Override
     public Restaurante cadastrar(Restaurante restaurante) {
-        RestauranteEntity restauranteEntity = this.restauranteEntityMapper.toEntity(restaurante);
+        RestauranteEntity restauranteEntity = this.restauranteEntityConverter.toEntity(restaurante);
         RestauranteEntity restauranteEntitySalvo = this.restauranteRepository.save(restauranteEntity);
-        return this.restauranteEntityMapper.toDomainObj(restauranteEntitySalvo);
+        return this.restauranteEntityConverter.toDomainObj(restauranteEntitySalvo);
     }
 }

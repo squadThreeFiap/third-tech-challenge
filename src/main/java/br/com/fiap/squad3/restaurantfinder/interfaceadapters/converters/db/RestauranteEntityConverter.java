@@ -1,11 +1,11 @@
-package br.com.fiap.squad3.restaurantfinder.interfaceadapters.mappers;
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 
-public class RestauranteEntityMapper {
+public class RestauranteEntityConverter {
     public RestauranteEntity toEntity(Restaurante restauranteDomainObj) {
         return new RestauranteEntity(
                 restauranteDomainObj.getNome(),
