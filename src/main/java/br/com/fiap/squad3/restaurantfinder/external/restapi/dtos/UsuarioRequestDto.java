@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
-public record UsuarioDto(
+public record UsuarioRequestDto(
         @Schema(hidden = true)
         Long id,
 
