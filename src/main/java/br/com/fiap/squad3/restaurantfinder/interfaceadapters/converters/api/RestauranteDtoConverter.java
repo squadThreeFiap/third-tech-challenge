@@ -3,17 +3,17 @@ package br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
-
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponseDto;
-import org.springframework.stereotype.Component;
 
-public class RestauranteDtoConverter {
+public class RestauranteDtoConverter implements DtoConverter<RestauranteRequestDto, Restaurante, RestauranteResponseDto> {
 
+    @Override
     public RestauranteResponseDto toResponse(Restaurante restaurante) {
         return new RestauranteResponseDto(restaurante.getId());
     }
 
+    @Override
     public Restaurante toDomain(RestauranteRequestDto restauranteRequestDto) {
         return new Restaurante(
                 restauranteRequestDto.id(),
@@ -36,7 +36,8 @@ public class RestauranteDtoConverter {
         );
     }
 
-    public void updateEntityFromDto(Restaurante restaurante, RestauranteRequestDto restauranteRequestDto) {
+    @Override
+    public void updateDomainFromDto(Restaurante restaurante, RestauranteRequestDto restauranteRequestDto) {
         restaurante.setNome(restauranteRequestDto.nome());
         restaurante.setTipoCozinha(restauranteRequestDto.tipoCozinha());
         restaurante.setCapacidade(restauranteRequestDto.capacidade());

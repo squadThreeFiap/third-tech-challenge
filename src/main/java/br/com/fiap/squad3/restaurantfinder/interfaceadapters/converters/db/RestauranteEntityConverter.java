@@ -5,7 +5,8 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Localizacao;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 
-public class RestauranteEntityConverter {
+public class RestauranteEntityConverter implements EntityConverter<Restaurante, RestauranteEntity> {
+    @Override
     public RestauranteEntity toEntity(Restaurante restauranteDomainObj) {
         return new RestauranteEntity(
                 restauranteDomainObj.getNome(),
@@ -22,6 +23,7 @@ public class RestauranteEntityConverter {
         );
     }
 
+    @Override
     public Restaurante toDomainObj(RestauranteEntity restauranteEntity) {
         return new Restaurante(
                 restauranteEntity.getId(),
