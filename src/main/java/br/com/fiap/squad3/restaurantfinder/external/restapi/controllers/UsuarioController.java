@@ -1,32 +1,43 @@
-//package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
-//
-//import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.UsuarioDto;
-//import br.com.fiap.squad3.restaurantfinder.external.restapi.services.UsuarioService;
-//import io.swagger.v3.oas.annotations.Parameter;
-//import jakarta.transaction.Transactional;
-//import jakarta.validation.Valid;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.data.web.PageableDefault;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-//@RequestMapping("/usuario")
-//public class UsuarioController {
-//    private final UsuarioService usuarioService; // Dependendo da interface
-//
-//    public UsuarioController(UsuarioService usuarioService) {
-//        this.usuarioService = usuarioService;
-//    }
-//
-//    @PostMapping(produces = {"application/json", "application/xml"}, consumes = {"application/json", "application/xml"})
-//    @Transactional
-//    public ResponseEntity<UsuarioDto> save(@Valid @RequestBody UsuarioDto usuarioDto) {
-//        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuarioDto));
-//    }
-//
+package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
+
+import br.com.fiap.squad3.restaurantfinder.application.entities.Usuario;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroUsuarioUseCase;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.UsuarioRequestDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.UsuarioResponseDto;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.UsuarioDtoConverter;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/usuario")
+public class UsuarioController {
+    private final CadastroUsuarioUseCase cadastroUsuarioUseCase;
+    private final UsuarioDtoConverter usuarioDtoConverter;
+
+    public UsuarioController(
+            CadastroUsuarioUseCase cadastroUsuarioUseCase,
+            UsuarioDtoConverter usuarioDtoConverter
+    ) {
+        this.cadastroUsuarioUseCase = cadastroUsuarioUseCase;
+        this.usuarioDtoConverter = usuarioDtoConverter;
+    }
+
+    @PostMapping()
+    @Transactional
+    public ResponseEntity<UsuarioResponseDto> save(@Valid @RequestBody UsuarioRequestDto usuarioRequestDto) {
+        Usuario usuario = usuarioDtoConverter.toDomain(usuarioRequestDto);
+        Usuario usuarioCadastrado = cadastroUsuarioUseCase.cadastrar(usuario);
+        UsuarioResponseDto usuarioCadastradoResponse = usuarioDtoConverter.toResponse(usuarioCadastrado);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCadastradoResponse);
+    }
+
 //    @PutMapping(
 //            value = "/{id}",
 //            produces = {"application/json", "application/xml"},
@@ -55,4 +66,4 @@
 //    ) {
 //        return ResponseEntity.ok(usuarioService.findAll(pageable));
 //    }
-//}
+}
