@@ -11,6 +11,15 @@ public class Usuario {
     private String email;
     private LocalDate dataCadastro;
 
+    public Usuario(String cpf, String nome, String ddd, String telefone, String email, LocalDate dataCadastro) {
+        this.setCpf(cpf);
+        this.setNome(nome);
+        this.setDdd(ddd);
+        this.setTelefone(telefone);
+        this.setEmail(email);
+        this.dataCadastro = dataCadastro;
+    }
+
     public Usuario(Long id, String cpf, String nome, String ddd, String telefone, String email, LocalDate dataCadastro) {
         this.id = id;
         this.setCpf(cpf);

@@ -10,14 +10,11 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
 
 public record UsuarioRequestDto(
-        @Schema(hidden = true)
-        Long id,
-
         @Schema(example = "33014076090")
         @CPF(message = "CPF inválido")
         String cpf,
 
-        @Schema(example = "Restaurant Finder")
+        @Schema(example = "João da Silva")
         @NotBlank(message = "nome não pode ser branco")
         @Size(min = 3, message = "digite um nome valido")
         @Size(max = 100, message = "Limite de 100 Caracteres")
