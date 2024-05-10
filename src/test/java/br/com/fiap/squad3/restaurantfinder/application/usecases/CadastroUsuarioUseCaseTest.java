@@ -2,7 +2,6 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Usuario;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
