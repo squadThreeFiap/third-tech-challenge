@@ -19,14 +19,14 @@ public class UsuarioRepositoryGateway implements UsuarioGateway {
     }
 
     @Override
-    public Boolean verificarSeExiste(String cpf) {
-        return this.usuarioRepository.existsByCpf(cpf);
-    }
-
-    @Override
     public Usuario cadastrar(Usuario usuario) {
         UsuarioEntity usuarioEntity = this.usuarioEntityConverter.toEntity(usuario);
         UsuarioEntity usuarioEntitySalvo = this.usuarioRepository.save(usuarioEntity);
         return this.usuarioEntityConverter.toDomainObj(usuarioEntitySalvo);
+    }
+
+    @Override
+    public Boolean verificarSeExistePeloCpf(String cpf) {
+        return this.usuarioRepository.existsByCpf(cpf);
     }
 }

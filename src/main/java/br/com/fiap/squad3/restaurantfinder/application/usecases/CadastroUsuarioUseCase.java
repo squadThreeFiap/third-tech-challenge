@@ -11,7 +11,7 @@ public class CadastroUsuarioUseCase {
     }
 
     public Usuario cadastrar(Usuario usuario) {
-        if (usuarioGateway.verificarSeExiste(usuario.getCpf())) {
+        if (usuarioGateway.verificarSeExistePeloCpf(usuario.getCpf())) {
             throw new IllegalArgumentException("Usuário com CPF " + usuario.getCpf() + " já existe.");
         }
 
