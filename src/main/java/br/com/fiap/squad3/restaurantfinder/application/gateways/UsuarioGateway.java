@@ -6,4 +6,6 @@ public interface UsuarioGateway {
     Usuario cadastrar(Usuario restaurante);
 
     Boolean verificarSeExistePeloCpf(String cpf);
+
+    Boolean verificarSeExistePeloId(Long id);
 }

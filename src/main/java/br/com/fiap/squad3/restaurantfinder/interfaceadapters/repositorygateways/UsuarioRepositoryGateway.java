@@ -29,4 +29,9 @@ public class UsuarioRepositoryGateway implements UsuarioGateway {
     public Boolean verificarSeExistePeloCpf(String cpf) {
         return this.usuarioRepository.existsByCpf(cpf);
     }
+
+    @Override
+    public Boolean verificarSeExistePeloId(Long id) {
+        return this.usuarioRepository.existsById(id);
+    }
 }
