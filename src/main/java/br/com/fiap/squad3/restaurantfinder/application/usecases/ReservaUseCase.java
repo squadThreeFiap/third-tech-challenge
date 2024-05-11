@@ -90,7 +90,7 @@ public class ReservaUseCase {
     }
 
     private boolean verificaSePermanenciaMinimaEstaValida(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        return calcularPermanencia(dataHoraInicio, dataHoraFim) > PERMANCENCIA_MINIMA;
+        return calcularPermanencia(dataHoraInicio, dataHoraFim) >= PERMANCENCIA_MINIMA;
     }
 
     private boolean verificaSePermanenciaMaximaEstaValida(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
