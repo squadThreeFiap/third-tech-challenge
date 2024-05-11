@@ -34,4 +34,10 @@ public class UsuarioRepositoryGateway implements UsuarioGateway {
     public Boolean verificarSeExistePeloId(Long id) {
         return this.usuarioRepository.existsById(id);
     }
+
+    @Override
+    public Usuario buscarPeloId(Long id) {
+        UsuarioEntity usuarioEncontrado = this.usuarioRepository.getReferenceById(id);
+        return this.usuarioEntityConverter.toDomainObj(usuarioEncontrado);
+    }
 }

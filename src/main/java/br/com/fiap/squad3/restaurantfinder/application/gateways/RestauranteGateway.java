@@ -6,4 +6,6 @@ public interface RestauranteGateway {
     Restaurante cadastrar(Restaurante restaurante);
 
     Boolean verificarSeExiste(Long id);
+
+    Restaurante buscarPeloId(Long id);
 }

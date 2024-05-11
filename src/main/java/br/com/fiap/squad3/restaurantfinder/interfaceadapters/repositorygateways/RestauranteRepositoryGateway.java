@@ -29,4 +29,10 @@ public class RestauranteRepositoryGateway implements RestauranteGateway {
     public Boolean verificarSeExiste(Long id) {
         return this.restauranteRepository.existsById(id);
     }
+
+    @Override
+    public Restaurante buscarPeloId(Long id) {
+        RestauranteEntity restauranteEncontrado = this.restauranteRepository.getReferenceById(id);
+        return this.restauranteEntityConverter.toDomainObj(restauranteEncontrado);
+    }
 }

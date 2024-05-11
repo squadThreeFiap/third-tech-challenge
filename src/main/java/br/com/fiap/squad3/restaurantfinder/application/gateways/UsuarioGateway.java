@@ -8,4 +8,6 @@ public interface UsuarioGateway {
     Boolean verificarSeExistePeloCpf(String cpf);
 
     Boolean verificarSeExistePeloId(Long id);
+
+    Usuario buscarPeloId(Long id);
 }
