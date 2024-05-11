@@ -25,8 +25,8 @@ public class Reserva {
         this.setIdUsuario(idUsuario);
         this.setIdRestaurante(idRestaurante);
         this.setQuantidadePessoas(quantidadePessoas);
-        this.setDataHoraInicio(dataHoraInicio);
-        this.setDataHoraFim(dataHoraFim);
+        this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
     }
 
     public Reserva(
@@ -40,8 +40,8 @@ public class Reserva {
         this.setIdUsuario(idUsuario);
         this.setIdRestaurante(idRestaurante);
         this.setQuantidadePessoas(quantidadePessoas);
-        this.setDataHoraInicio(dataHoraInicio);
-        this.setDataHoraFim(dataHoraFim);
+        this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
         this.status = status;
     }
 
@@ -58,8 +58,8 @@ public class Reserva {
         this.setIdUsuario(idUsuario);
         this.setIdRestaurante(idRestaurante);
         this.setQuantidadePessoas(quantidadePessoas);
-        this.setDataHoraInicio(dataHoraInicio);
-        this.setDataHoraFim(dataHoraFim);
+        this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
         this.status = status;
     }
 
@@ -115,10 +115,6 @@ public class Reserva {
     }
 
     public void setDataHoraInicio(LocalDateTime dataHoraInicio) {
-        if (dataHoraInicio.isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Data de início da reserva não pode estar no passado.");
-        }
-
         this.dataHoraInicio = dataHoraInicio;
     }
 
@@ -127,10 +123,6 @@ public class Reserva {
     }
 
     public void setDataHoraFim(LocalDateTime dataHoraFim) {
-        if (dataHoraFim.isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Data de fim da reserva não pode estar no passado.");
-        }
-
         this.dataHoraFim = dataHoraFim;
     }
 

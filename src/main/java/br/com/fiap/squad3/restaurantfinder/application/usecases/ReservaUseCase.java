@@ -64,6 +64,14 @@ public class ReservaUseCase {
     }
 
     private void validarConsistenciaDoHorarioDoAgendamento(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+        if(!verificaSeDataHoraEstaNoFuturo(dataHoraInicio)){
+            throw new IllegalArgumentException("Data de início da reserva não pode estar no passado.");
+        }
+
+        if(!verificaSeDataHoraEstaNoFuturo(dataHoraFim)){
+            throw new IllegalArgumentException("Data de fim da reserva não pode estar no passado.");
+        }
+
         if (!verificaSeAgendamentoEstaNoMesmoDia(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Data de agendamento inicial deve acontecer no mesmo dia que o fim.");
         }
@@ -79,6 +87,10 @@ public class ReservaUseCase {
         if (!verificaSePermanenciaMaximaEstaValida(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Permanência máxima é de " + PERMANCENCIA_MAXIMA + "h.");
         }
+    }
+
+    private boolean verificaSeDataHoraEstaNoFuturo(LocalDateTime dataHora) {
+        return dataHora.isAfter(LocalDateTime.now());
     }
 
     private boolean verificaSeAgendamentoEstaNoMesmoDia(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
