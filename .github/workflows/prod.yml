@@ -2,7 +2,7 @@ name: Deploy Application third-tech-challenge
 
 on:
   push:
-    branches: [main]
+    branches: [feature/reservation]
 
 jobs:
   build:
