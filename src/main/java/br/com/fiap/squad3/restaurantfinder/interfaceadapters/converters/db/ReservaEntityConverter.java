@@ -2,15 +2,8 @@ package br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways.ReservaRepositoryGateway;
 
 public class ReservaEntityConverter implements EntityConverter<Reserva, ReservaEntity> {
-    private final ReservaRepositoryGateway reservaRepositoryGateway;
-
-    public ReservaEntityConverter(ReservaRepositoryGateway reservaRepositoryGateway) {
-        this.reservaRepositoryGateway = reservaRepositoryGateway;
-    }
-
     @Override
     public ReservaEntity toEntity(Reserva domainObj) {
         ReservaEntity reservaEntity = new ReservaEntity();
