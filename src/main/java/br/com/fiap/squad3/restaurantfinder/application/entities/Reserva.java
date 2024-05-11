@@ -22,11 +22,11 @@ public class Reserva {
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim
     ) {
-        this.idUsuario = idUsuario;
-        this.idRestaurante = idRestaurante;
-        this.quantidadePessoas = quantidadePessoas;
-        this.dataHoraInicio = dataHoraInicio;
-        this.dataHoraFim = dataHoraFim;
+        this.setIdUsuario(idUsuario);
+        this.setIdRestaurante(idRestaurante);
+        this.setQuantidadePessoas(quantidadePessoas);
+        this.setDataHoraInicio(dataHoraInicio);
+        this.setDataHoraFim(dataHoraFim);
     }
 
     public Reserva(
@@ -37,11 +37,11 @@ public class Reserva {
             LocalDateTime dataHoraFim,
             StatusReserva status
     ) {
-        this.idUsuario = idUsuario;
-        this.idRestaurante = idRestaurante;
-        this.quantidadePessoas = quantidadePessoas;
-        this.dataHoraInicio = dataHoraInicio;
-        this.dataHoraFim = dataHoraFim;
+        this.setIdUsuario(idUsuario);
+        this.setIdRestaurante(idRestaurante);
+        this.setQuantidadePessoas(quantidadePessoas);
+        this.setDataHoraInicio(dataHoraInicio);
+        this.setDataHoraFim(dataHoraFim);
         this.status = status;
     }
 
@@ -55,11 +55,11 @@ public class Reserva {
             StatusReserva status
     ) {
         this.id = id;
-        this.idUsuario = idUsuario;
-        this.idRestaurante = idRestaurante;
-        this.quantidadePessoas = quantidadePessoas;
-        this.dataHoraInicio = dataHoraInicio;
-        this.dataHoraFim = dataHoraFim;
+        this.setIdUsuario(idUsuario);
+        this.setIdRestaurante(idRestaurante);
+        this.setQuantidadePessoas(quantidadePessoas);
+        this.setDataHoraInicio(dataHoraInicio);
+        this.setDataHoraFim(dataHoraFim);
         this.status = status;
     }
 
