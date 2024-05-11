@@ -48,7 +48,7 @@ class ReservaUseCaseTest {
         Reserva reserva = reservaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
 
         assertNotNull(reserva);
-        assertEquals(StatusReserva.AGUARDANDO, reserva.getStatus());
+        assertEquals(StatusReserva.AGENDADO, reserva.getStatus());
     }
 
     @Test

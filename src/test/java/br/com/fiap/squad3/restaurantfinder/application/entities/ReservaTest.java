@@ -21,7 +21,7 @@ class ReservaTest {
                 3,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
-                StatusReserva.AGUARDANDO
+                StatusReserva.AGENDADO
         );
     }
 
@@ -35,7 +35,7 @@ class ReservaTest {
                 3,
                 LocalDateTime.now(),
                 LocalDateTime.now(),
-                StatusReserva.AGUARDANDO
+                StatusReserva.AGENDADO
         );
 
         assertEquals(idUsuarioEsperado, reserva.getIdUsuario());

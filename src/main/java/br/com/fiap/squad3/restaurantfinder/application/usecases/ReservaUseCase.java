@@ -54,7 +54,7 @@ public class ReservaUseCase {
                 quantidadePessoas,
                 dataHoraInicio,
                 dataHoraFim,
-                StatusReserva.AGUARDANDO
+                StatusReserva.AGENDADO
         );
 
         return reservaGateway.cadastrar(reserva);
