@@ -1,6 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.external.jpa.entities;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.DiaSemana;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,7 @@ public class RestauranteEntity {
     @NotNull
     private String bairro;
 
+    @Nullable
     private Integer numero;
 
     @Enumerated(EnumType.STRING)
@@ -63,6 +65,7 @@ public class RestauranteEntity {
             String uf,
             String cidade,
             String bairro,
+            Integer numero,
             Set<DiaSemana> diasFuncionamentos,
             LocalTime horaAbertura,
             LocalTime horaEnceramento,
@@ -75,6 +78,7 @@ public class RestauranteEntity {
         this.uf = uf;
         this.cidade = cidade;
         this.bairro = bairro;
+        this.numero = numero;
         this.diasFuncionamentos = diasFuncionamentos;
         this.horaAbertura = horaAbertura;
         this.horaEnceramento = horaEnceramento;
