@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public interface ReservaGateway {
     Boolean verificarSeEstaDisponivelParaReservar(
+            Long idRestaurante,
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim,
             Integer quantidadePessoas

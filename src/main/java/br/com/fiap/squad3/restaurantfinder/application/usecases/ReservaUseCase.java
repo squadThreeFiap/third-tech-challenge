@@ -46,7 +46,7 @@ public class ReservaUseCase {
     ) {
         validarConsistenciaDoHorarioDoAgendamento(dataHoraInicio, dataHoraFim);
         validarIntegridadeDosDadosNaBaseDeDados(idUsuario, idRestaurante);
-        validarDisponibilidadeNoHorarioAgendado(dataHoraInicio, dataHoraFim, quantidadePessoas);
+        validarDisponibilidadeNoHorarioAgendado(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas);
 
         Reserva reserva = new Reserva(
                 idUsuario,
@@ -109,12 +109,20 @@ public class ReservaUseCase {
     }
 
     private void validarDisponibilidadeNoHorarioAgendado(
+            Long idRestaurante,
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim,
             Integer quantidadePessoas
     ) {
-        if (!reservaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)) {
-            throw new IllegalArgumentException("Restaurante não encontrado.");
+        Boolean estaDisponivelParaReservar = reservaGateway.verificarSeEstaDisponivelParaReservar(
+                idRestaurante,
+                dataHoraInicio,
+                dataHoraFim,
+                quantidadePessoas
+        );
+
+        if (!estaDisponivelParaReservar) {
+            throw new IllegalArgumentException("Restaurante não suporta mais reservas no horário selecionado.");
         }
     }
 }

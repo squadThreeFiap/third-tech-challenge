@@ -43,7 +43,7 @@ class ReservaUseCaseTest {
 
         when(usuarioGateway.verificarSeExistePeloId(idUsuario)).thenReturn(true);
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
-        when(reservaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
+        when(reservaGateway.verificarSeEstaDisponivelParaReservar(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
 
         Reserva reserva = reservaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
 
