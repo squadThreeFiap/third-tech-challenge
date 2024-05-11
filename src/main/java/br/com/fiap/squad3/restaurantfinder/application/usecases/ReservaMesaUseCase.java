@@ -27,6 +27,16 @@ public class ReservaMesaUseCase {
         this.reservaMesaGateway = reservaMesaGateway;
     }
 
+    public Reserva reservar(Reserva reserva) {
+        return this.reservar(
+                reserva.getIdUsuario(),
+                reserva.getIdRestaurante(),
+                reserva.getQuantidadePessoas(),
+                reserva.getDataHoraInicio(),
+                reserva.getDataHoraFim()
+        );
+    }
+
     public Reserva reservar(
             Long idUsuario,
             Long idRestaurante,
