@@ -9,7 +9,7 @@ import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class ReservaMesaUseCase {
+public class ReservaUseCase {
     private static final int PERMANCENCIA_MINIMA = 1;
     private static final int PERMANCENCIA_MAXIMA = 5;
 
@@ -17,7 +17,7 @@ public class ReservaMesaUseCase {
     private final RestauranteGateway restauranteGateway;
     private final ReservaMesaGateway reservaMesaGateway;
 
-    public ReservaMesaUseCase(
+    public ReservaUseCase(
             UsuarioGateway usuarioGateway,
             RestauranteGateway restauranteGateway,
             ReservaMesaGateway reservaMesaGateway

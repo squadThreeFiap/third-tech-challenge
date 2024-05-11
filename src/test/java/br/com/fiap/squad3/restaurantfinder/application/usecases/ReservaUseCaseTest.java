@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class ReservaMesaUseCaseTest {
-    private ReservaMesaUseCase reservaMesaUseCase;
+class ReservaUseCaseTest {
+    private ReservaUseCase reservaUseCase;
 
     @Mock
     private UsuarioGateway usuarioGateway;
@@ -30,7 +30,7 @@ class ReservaMesaUseCaseTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        reservaMesaUseCase = new ReservaMesaUseCase(usuarioGateway, restauranteGateway, reservaMesaGateway);
+        reservaUseCase = new ReservaUseCase(usuarioGateway, restauranteGateway, reservaMesaGateway);
     }
 
     @Test
@@ -45,7 +45,7 @@ class ReservaMesaUseCaseTest {
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
         when(reservaMesaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
 
-        Reserva reserva = reservaMesaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
+        Reserva reserva = reservaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
 
         assertNotNull(reserva);
         assertEquals(StatusReserva.AGUARDANDO, reserva.getStatus());
