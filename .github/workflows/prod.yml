@@ -1,0 +1,29 @@
+name: Deploy Application third-tech-challenge
+
+on:
+  push:
+    branches: [feature/reservation]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build project
+        run: mvn clean install -DskipTests
+
+      - name: Login Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Build and push application docker image
+        run: |
+          docker build -t squadthreefiap/third-tech-challenge .
+          docker push squadthreefiap/third-tech-challenge
