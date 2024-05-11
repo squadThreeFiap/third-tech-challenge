@@ -46,18 +46,19 @@ public class ReservaUseCase {
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim
     ) {
-        validarConsistenciaDoHorarioDoAgendamento(dataHoraInicio, dataHoraFim);
-        validarIntegridadeDosDadosNaBaseDeDados(idUsuario, idRestaurante);
-        validarDisponibilidadeNoHorarioAgendado(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas);
-
         Reserva reserva = new Reserva(
                 idUsuario,
                 idRestaurante,
                 quantidadePessoas,
                 dataHoraInicio,
-                dataHoraFim,
-                StatusReserva.AGENDADO
+                dataHoraFim
         );
+
+        validarConsistenciaDoHorarioDoAgendamento(dataHoraInicio, dataHoraFim);
+        validarIntegridadeDosDadosNaBaseDeDados(idUsuario, idRestaurante);
+        validarDisponibilidadeNoHorarioAgendado(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas);
+
+        reserva.setStatus(StatusReserva.AGENDADO);
 
         return reservaGateway.cadastrar(reserva);
     }
