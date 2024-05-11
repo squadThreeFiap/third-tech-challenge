@@ -7,7 +7,6 @@ import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGatew
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -46,7 +45,7 @@ class ReservaMesaUseCaseTest {
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
         when(reservaMesaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
 
-        Reserva reserva = reservaMesaUseCase.reservar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
+        Reserva reserva = reservaMesaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
 
         assertNotNull(reserva);
         assertEquals(StatusReserva.AGUARDANDO, reserva.getStatus());

@@ -29,7 +29,7 @@ public class ReservaController {
     @Transactional
     public ResponseEntity<ReservaResponsetDto> save(@Valid @RequestBody ReservaRequestDto reservaRequestDto) {
         Reserva reserva = reservaDtoConverter.toDomain(reservaRequestDto);
-        Reserva reservaCadastrada = reservaMesaUseCase.reservar(reserva);
+        Reserva reservaCadastrada = reservaMesaUseCase.cadastrar(reserva);
         ReservaResponsetDto reservaCadastradaResponse = reservaDtoConverter.toResponse(reservaCadastrada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaCadastradaResponse);
