@@ -1,6 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
+import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusReserva;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
@@ -8,6 +9,7 @@ import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ReservaUseCase {
     private static final int PERMANCENCIA_MINIMA = 1;
@@ -114,7 +116,7 @@ public class ReservaUseCase {
             LocalDateTime dataHoraFim,
             Integer quantidadePessoas
     ) {
-        Boolean estaDisponivelParaReservar = reservaGateway.verificarSeEstaDisponivelParaReservar(
+        Boolean estaDisponivelParaReservar = verificarSeEstaDisponivelParaReservar(
                 idRestaurante,
                 dataHoraInicio,
                 dataHoraFim,
@@ -124,5 +126,27 @@ public class ReservaUseCase {
         if (!estaDisponivelParaReservar) {
             throw new IllegalArgumentException("Restaurante não suporta mais reservas no horário selecionado.");
         }
+    }
+
+    private boolean verificarSeEstaDisponivelParaReservar(
+            Long idRestaurante,
+            LocalDateTime dataHoraInicio,
+            LocalDateTime dataHoraFim,
+            Integer quantidadePessoas
+    ) {
+        List<Reserva> reservasEmAndamento = reservaGateway.obterTodasAsReservasOcupadasNoHorarioAgendado(
+                idRestaurante,
+                dataHoraInicio,
+                dataHoraFim
+        );
+
+        Integer capacidadeOcupada = reservasEmAndamento.stream()
+                .mapToInt(Reserva::getQuantidadePessoas)
+                .sum();
+
+        Restaurante restaurante = restauranteGateway.buscarPeloId(idRestaurante);
+        Integer capacidadeSuportadoNoRestaurante = restaurante.getCapacidade();
+
+        return (capacidadeOcupada + quantidadePessoas) <= capacidadeSuportadoNoRestaurante;
     }
 }

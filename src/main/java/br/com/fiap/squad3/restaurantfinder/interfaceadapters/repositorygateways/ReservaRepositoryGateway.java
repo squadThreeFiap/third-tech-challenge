@@ -32,26 +32,18 @@ public class ReservaRepositoryGateway implements ReservaGateway {
     }
 
     @Override
-    public Boolean verificarSeEstaDisponivelParaReservar(
+    public List<Reserva> obterTodasAsReservasOcupadasNoHorarioAgendado(
             Long idRestaurante,
             LocalDateTime dataHoraInicio,
-            LocalDateTime dataHoraFim,
-            Integer quantidadePessoas
+            LocalDateTime dataHoraFim
     ) {
-        List<ReservaEntity> reservasEmAndamento = reservaRepository.findAllOccupiedReservationBetweenDates(
+        List<ReservaEntity> reservasOcupadas = reservaRepository.findAllOccupiedReservationBetweenDates(
                 idRestaurante,
                 dataHoraInicio,
                 dataHoraFim
         );
 
-        Integer quantidadePessoasEmAndamento = reservasEmAndamento.stream()
-                .mapToInt(ReservaEntity::getQuantidadePessoas)
-                .sum();
-
-        RestauranteEntity restauranteEntity = restauranteRepository.getReferenceById(idRestaurante);
-        Integer quantidadePessoasSuportadoNoRestaurante = restauranteEntity.getCapacidade();
-
-        return (quantidadePessoasEmAndamento + quantidadePessoas) <= quantidadePessoasSuportadoNoRestaurante ;
+        return reservasOcupadas.stream().map(reservaEntityConverter::toDomainObj).toList();
     }
 
     @Override
