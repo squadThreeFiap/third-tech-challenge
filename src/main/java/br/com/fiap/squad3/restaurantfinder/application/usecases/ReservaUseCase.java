@@ -63,37 +63,37 @@ public class ReservaUseCase {
     }
 
     private void validarConsistenciaDoHorarioDoAgendamento(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        if (!verificaDiaReserva(dataHoraInicio, dataHoraFim)) {
+        if (!verificaSeAgendamentoEstaNoMesmoDia(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Data de agendamento inicial deve acontecer no mesmo dia que o fim.");
         }
 
-        if (!verificaHoraInicialAposFinal(dataHoraInicio, dataHoraFim)) {
+        if (!verificaSeHoraInicialAntecedeFinal(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Horário inicial do agendamento deve preceder o final.");
         }
 
-        if (!verificaPermanenciaMinima(dataHoraInicio, dataHoraFim)) {
+        if (!verificaSePermanenciaMinimaEstaValida(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Permanência mínima é de " + PERMANCENCIA_MINIMA + "h.");
         }
 
-        if (!verificaPermanenciaMaxima(dataHoraInicio, dataHoraFim)) {
+        if (!verificaSePermanenciaMaximaEstaValida(dataHoraInicio, dataHoraFim)) {
             throw new IllegalArgumentException("Permanência máxima é de " + PERMANCENCIA_MAXIMA + "h.");
         }
     }
 
-    private boolean verificaDiaReserva(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+    private boolean verificaSeAgendamentoEstaNoMesmoDia(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
         return dataHoraInicio.getDayOfMonth() == dataHoraFim.getDayOfMonth();
     }
 
-    private boolean verificaHoraInicialAposFinal(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        return dataHoraInicio.getHour() > dataHoraFim.getHour();
+    private boolean verificaSeHoraInicialAntecedeFinal(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+        return dataHoraInicio.getHour() < dataHoraFim.getHour();
     }
 
-    private boolean verificaPermanenciaMinima(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        return calcularPermanencia(dataHoraInicio, dataHoraFim) < PERMANCENCIA_MINIMA;
+    private boolean verificaSePermanenciaMinimaEstaValida(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+        return calcularPermanencia(dataHoraInicio, dataHoraFim) > PERMANCENCIA_MINIMA;
     }
 
-    private boolean verificaPermanenciaMaxima(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        return calcularPermanencia(dataHoraInicio, dataHoraFim) > PERMANCENCIA_MAXIMA;
+    private boolean verificaSePermanenciaMaximaEstaValida(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+        return calcularPermanencia(dataHoraInicio, dataHoraFim) <= PERMANCENCIA_MAXIMA;
     }
 
     private Integer calcularPermanencia(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
