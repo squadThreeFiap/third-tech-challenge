@@ -41,4 +41,8 @@ public class UsuarioEntity {
     protected void onCreate() {
         dataCadastro = LocalDate.now();
     }
+
+    public UsuarioEntity(Long id) {
+        this.id = id;
+    }
 }

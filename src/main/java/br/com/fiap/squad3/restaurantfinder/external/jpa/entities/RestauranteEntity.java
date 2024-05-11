@@ -57,6 +57,10 @@ public class RestauranteEntity {
     @NotNull
     private int capacidade;
 
+    public RestauranteEntity(Long id) {
+        this.id = id;
+    }
+
     public RestauranteEntity(
             String nome,
             String tipoCozinha,
