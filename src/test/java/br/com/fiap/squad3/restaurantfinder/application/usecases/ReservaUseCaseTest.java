@@ -35,20 +35,7 @@ class ReservaUseCaseTest {
 
     @Test
     void testReservar_ValoresValidos_Success() {
-        Long idUsuario = 1L;
-        Long idRestaurante = 2L;
-        Integer quantidadePessoas = 4;
-        LocalDateTime dataHoraInicio = LocalDateTime.now().plusHours(1);
-        LocalDateTime dataHoraFim = LocalDateTime.now().plusHours(2);
-
-        when(usuarioGateway.verificarSeExistePeloId(idUsuario)).thenReturn(true);
-        when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
-        when(reservaGateway.verificarSeEstaDisponivelParaReservar(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
-
-        Reserva reserva = reservaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
-
-        assertNotNull(reserva);
-        assertEquals(StatusReserva.AGENDADO, reserva.getStatus());
+        fail("Teste pendente de implementação.");
     }
 
     @Test
