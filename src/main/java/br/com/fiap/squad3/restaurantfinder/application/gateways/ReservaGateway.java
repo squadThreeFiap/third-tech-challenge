@@ -4,7 +4,7 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 
 import java.time.LocalDateTime;
 
-public interface ReservaMesaGateway {
+public interface ReservaGateway {
     Boolean verificarSeEstaDisponivelParaReservar(
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim,

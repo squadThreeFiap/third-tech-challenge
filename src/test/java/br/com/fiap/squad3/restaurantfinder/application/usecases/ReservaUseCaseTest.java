@@ -2,7 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusReserva;
-import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaMesaGateway;
+import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,12 +25,12 @@ class ReservaUseCaseTest {
     private RestauranteGateway restauranteGateway;
 
     @Mock
-    private ReservaMesaGateway reservaMesaGateway;
+    private ReservaGateway reservaGateway;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        reservaUseCase = new ReservaUseCase(usuarioGateway, restauranteGateway, reservaMesaGateway);
+        reservaUseCase = new ReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
     }
 
     @Test
@@ -43,7 +43,7 @@ class ReservaUseCaseTest {
 
         when(usuarioGateway.verificarSeExistePeloId(idUsuario)).thenReturn(true);
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
-        when(reservaMesaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
+        when(reservaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)).thenReturn(true);
 
         Reserva reserva = reservaUseCase.cadastrar(idUsuario, idRestaurante, quantidadePessoas, dataHoraInicio, dataHoraFim);
 

@@ -2,7 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusReserva;
-import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaMesaGateway;
+import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
 
@@ -15,16 +15,16 @@ public class ReservaUseCase {
 
     private final UsuarioGateway usuarioGateway;
     private final RestauranteGateway restauranteGateway;
-    private final ReservaMesaGateway reservaMesaGateway;
+    private final ReservaGateway reservaGateway;
 
     public ReservaUseCase(
             UsuarioGateway usuarioGateway,
             RestauranteGateway restauranteGateway,
-            ReservaMesaGateway reservaMesaGateway
+            ReservaGateway reservaGateway
     ) {
         this.usuarioGateway = usuarioGateway;
         this.restauranteGateway = restauranteGateway;
-        this.reservaMesaGateway = reservaMesaGateway;
+        this.reservaGateway = reservaGateway;
     }
 
     public Reserva cadastrar(Reserva reserva) {
@@ -57,7 +57,7 @@ public class ReservaUseCase {
                 StatusReserva.AGUARDANDO
         );
 
-        return reservaMesaGateway.cadastrar(reserva);
+        return reservaGateway.cadastrar(reserva);
     }
 
     private void validarConsistenciaDoHorarioDoAgendamento(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
@@ -113,7 +113,7 @@ public class ReservaUseCase {
             LocalDateTime dataHoraFim,
             Integer quantidadePessoas
     ) {
-        if (!reservaMesaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)) {
+        if (!reservaGateway.verificarSeEstaDisponivelParaReservar(dataHoraInicio, dataHoraFim, quantidadePessoas)) {
             throw new IllegalArgumentException("Restaurante não encontrado.");
         }
     }
