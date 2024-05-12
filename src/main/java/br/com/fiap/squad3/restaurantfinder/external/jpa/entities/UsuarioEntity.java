@@ -19,7 +19,7 @@ public class UsuarioEntity {
     private Long id;
 
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true, length = 11)
     private String cpf;
 
     @NotNull
@@ -27,9 +27,11 @@ public class UsuarioEntity {
     private String nome;
 
     @NotNull
+    @Column(length = 2)
     private String ddd;
 
     @NotNull
+    @Column(length = 8)
     private String telefone;
 
     @NotNull
