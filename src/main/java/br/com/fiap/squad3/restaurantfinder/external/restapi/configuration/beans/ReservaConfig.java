@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.configuration.beans
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
-import br.com.fiap.squad3.restaurantfinder.application.usecases.ReservaUseCase;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroReservaUseCase;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
@@ -16,12 +16,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ReservaConfig {
     @Bean
-    ReservaUseCase reservaUseCase(
+    CadastroReservaUseCase reservaUseCase(
             UsuarioGateway usuarioGateway,
             RestauranteGateway restauranteGateway,
             ReservaGateway reservaGateway
     ) {
-        return new ReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
+        return new CadastroReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
     }
 
     @Bean
