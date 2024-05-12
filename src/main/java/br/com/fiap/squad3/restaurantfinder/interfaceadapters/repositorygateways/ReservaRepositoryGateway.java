@@ -11,6 +11,7 @@ import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.Reser
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class ReservaRepositoryGateway implements ReservaGateway {
     private final ReservaRepository reservaRepository;
@@ -70,5 +71,16 @@ public class ReservaRepositoryGateway implements ReservaGateway {
         );
 
         return reservasOcupadas.stream().map(reservaEntityConverter::toDomainObj).toList();
+    }
+
+    @Override
+    public Reserva buscarPeloId(Long id) {
+        Optional<ReservaEntity> reserva = this.reservaRepository.findById(id);
+
+        if(reserva.isPresent()) {
+            return reservaEntityConverter.toDomainObj(reserva.get());
+        }
+
+        return null;
     }
 }
