@@ -13,8 +13,8 @@ import java.util.List;
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
     @Query("SELECT r FROM ReservaEntity r WHERE " +
             "r.restauranteEntity.id = :idRestaurante AND " + // Somente reservas do restaurante desejado
-            "r.dataHoraInicio >= :inicio AND r.dataHoraFim <= :fim AND " + // Intervalo desejado
-            "r.status = 'ANDAMENTO' OR r.status = 'AGENDADO'" // Apenas status que impossibilitariam novas reservas
+            "(r.dataHoraInicio >= :inicio AND r.dataHoraFim <= :fim) AND " + // Intervalo desejado
+            "(r.status = 'ANDAMENTO' OR r.status = 'AGENDADO')" // Apenas status que impossibilitariam novas reservas
     )
     List<ReservaEntity> findAllOccupiedReservationBetweenDates(
             @Param("idRestaurante") Long idRestaurante,
