@@ -21,4 +21,15 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
             @Param("inicio") LocalDateTime dataHoraInicio,
             @Param("fim") LocalDateTime dataHoraFim
     );
+
+    @Query("SELECT r FROM ReservaEntity r WHERE " +
+            "r.usuarioEntity.id = :idUsuario AND " + // Somente reservas do usuário em específico
+            "(r.dataHoraInicio >= :inicio AND r.dataHoraFim <= :fim) AND " + // Intervalo desejado
+            "(r.status = 'ANDAMENTO' OR r.status = 'AGENDADO')" // Apenas status que impossibilitariam novas reservas
+    )
+    List<ReservaEntity> findAllByIdUsuarioBetweenDates(
+            @Param("idUsuario") Long idUsuario,
+            @Param("inicio") LocalDateTime dataHoraInicio,
+            @Param("fim") LocalDateTime dataHoraFim
+    );
 }

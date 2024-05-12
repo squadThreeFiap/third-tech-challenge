@@ -56,7 +56,8 @@ public class ReservaUseCase {
 
         validarConsistenciaDoHorarioDoAgendamento(dataHoraInicio, dataHoraFim);
         validarIntegridadeDosDadosNaBaseDeDados(idUsuario, idRestaurante);
-        validarDisponibilidadeNoHorarioAgendado(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas);
+        validarDisponibilidadeNoHorarioAgendadoDoUsuario(idUsuario, dataHoraInicio, dataHoraFim);
+        validarDisponibilidadeNoHorarioAgendadoDoRestaurante(idRestaurante, dataHoraInicio, dataHoraFim, quantidadePessoas);
 
         reserva.setStatus(StatusReserva.AGENDADO);
 
@@ -123,7 +124,29 @@ public class ReservaUseCase {
         }
     }
 
-    private void validarDisponibilidadeNoHorarioAgendado(
+    /**
+     * Considerar o restaurante não importa nesse caso, pois a aplicação foi desenvolvida para o uso individual, ou seja
+     * o usuário deve reservar mesas para si (obrigadtóriamente) mas permite ter mais pessoas o acompanhando. Assim
+     * levamos em conta que caso o cliente tenha uma reserva em qualquer restaurante do sistema, não deve estar
+     * em dois lugares ao mesmo tempo. A menos que libere sua posição na reserva anterior.
+     */
+    private void validarDisponibilidadeNoHorarioAgendadoDoUsuario(
+            Long idUsuario,
+            LocalDateTime dataHoraInicio,
+            LocalDateTime dataHoraFim
+    ) {
+        List<Reserva> reservas = reservaGateway.obterReservasDoUsuarioNoHorarioAgendado(
+                idUsuario,
+                dataHoraInicio,
+                dataHoraFim
+        );
+
+        if(!reservas.isEmpty()){
+            throw new IllegalArgumentException("Usuário já está ocupando a capacidade do restaurante neste horário.");
+        }
+    }
+
+    private void validarDisponibilidadeNoHorarioAgendadoDoRestaurante(
             Long idRestaurante,
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim,

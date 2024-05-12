@@ -13,4 +13,10 @@ public interface ReservaGateway {
     );
 
     Reserva cadastrar(Reserva reserva);
+
+    List<Reserva> obterReservasDoUsuarioNoHorarioAgendado(
+            Long idUsuario,
+            LocalDateTime dataHoraInicio,
+            LocalDateTime dataHoraFim
+    );
 }

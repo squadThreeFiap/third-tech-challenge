@@ -144,7 +144,30 @@ class ReservaUseCaseTest {
     }
 
     @Test
-    void testReservar_ValoresInvalidos_HorarioIndisponivel() {
+    void testReservar_ValoresInvalidos_HorarioIndisponivelParaUsuario() {
+        when(usuarioGateway.verificarSeExistePeloId(reserva.getIdUsuario())).thenReturn(true);
+        when(restauranteGateway.verificarSeExiste(reserva.getIdRestaurante())).thenReturn(true);
+
+        Reserva reservaDoUsuario = new ReservaMock();
+        reservaDoUsuario.setIdUsuario(reserva.getIdUsuario()); // Reserva do mesmo usuario que está tentando reservar
+        reservaDoUsuario.setDataHoraInicio(reserva.getDataHoraInicio());
+        reservaDoUsuario.setDataHoraFim(reserva.getDataHoraFim());
+
+        when(
+                reservaGateway.obterReservasDoUsuarioNoHorarioAgendado(
+                        reserva.getIdRestaurante(),
+                        reserva.getDataHoraInicio(),
+                        reserva.getDataHoraFim()
+                )
+        ).thenReturn(
+                Arrays.asList(reservaDoUsuario) // Conflito de reservas
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+    }
+
+    @Test
+    void testReservar_ValoresInvalidos_HorarioIndisponivelParaRestaurante() {
         when(usuarioGateway.verificarSeExistePeloId(reserva.getIdUsuario())).thenReturn(true);
         when(restauranteGateway.verificarSeExiste(reserva.getIdRestaurante())).thenReturn(true);
 

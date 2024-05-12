@@ -56,4 +56,19 @@ public class ReservaRepositoryGateway implements ReservaGateway {
 
         return this.reservaEntityConverter.toDomainObj(reservaEntityCadastrado);
     }
+
+    @Override
+    public List<Reserva> obterReservasDoUsuarioNoHorarioAgendado(
+            Long idUsuario,
+            LocalDateTime dataHoraInicio,
+            LocalDateTime dataHoraFim
+    ) {
+        List<ReservaEntity> reservasOcupadas = this.reservaRepository.findAllByIdUsuarioBetweenDates(
+                idUsuario,
+                dataHoraInicio,
+                dataHoraFim
+        );
+
+        return reservasOcupadas.stream().map(reservaEntityConverter::toDomainObj).toList();
+    }
 }
