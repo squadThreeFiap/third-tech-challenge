@@ -1,7 +1,6 @@
 package br.com.fiap.squad3.restaurantfinder.external.jpa.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,16 +15,13 @@ public class AvaliacaoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private String nome;
+    @OneToOne
+    @JoinColumn(name = "reserva_id")
+    private ReservaEntity reservaEntity;
 
-    @NotNull
+    @Column(nullable = false)
+    private short nota;
+
+    @Column(nullable = true)
     private String comentario;
-
-    @NotNull
-    private int nota;
-
-    @ManyToOne
-    @JoinColumn(name = "restaurante_id")
-    private RestauranteEntity restauranteEntity;
 }
