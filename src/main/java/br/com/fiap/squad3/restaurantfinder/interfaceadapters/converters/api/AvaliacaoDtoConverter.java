@@ -1,35 +1,30 @@
-//package br.com.fiap.squad3.restaurantfinder.external.restapi.converter.impl;
-//
-//import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.AvaliacaoEntity;
-//import br.com.fiap.squad3.restaurantfinder.external.restapi.converter.AvaliacaoConverter;
-//import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
-//import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.AvaliacaoDto;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class AvaliacaoConverterImpl {
-//    public AvaliacaoDto toDto(AvaliacaoEntity avaliacaoEntity) {
-//        return new AvaliacaoDto(
-//                avaliacaoEntity.getId(),
-//                avaliacaoEntity.getNome(),
-//                avaliacaoEntity.getComentario(),
-//                avaliacaoEntity.getNota(),
-//                avaliacaoEntity.getRestauranteEntity().getId()
-//        );
-//    }
-//
-//    public AvaliacaoEntity toEntity(AvaliacaoDto avaliacaoDto, RestauranteEntity restauranteEntity) {
-//        return new AvaliacaoEntity(
-//                avaliacaoDto.id(),
-//                avaliacaoDto.nome(),
-//                avaliacaoDto.comentario(),
-//                avaliacaoDto.nota(),
-//                restauranteEntity
-//        );
-//    }
-//
-//    public void updateEntityFromDto(AvaliacaoEntity avaliacaoEntity, AvaliacaoDto avaliacaoDto) {
-//        avaliacaoEntity.setComentario(avaliacaoDto.comentario());
-//        avaliacaoEntity.setNota(avaliacaoDto.nota());
-//    }
-//}
+package br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api;
+
+import br.com.fiap.squad3.restaurantfinder.application.entities.Avaliacao;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.AvaliacaoRequestDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.AvaliacaoResponseDto;
+import org.springframework.stereotype.Component;
+
+@Component
+public class AvaliacaoDtoConverter implements DtoConverter<AvaliacaoRequestDto, Avaliacao, AvaliacaoResponseDto> {
+
+    @Override
+    public AvaliacaoResponseDto toResponse(Avaliacao domainObj) {
+        return new AvaliacaoResponseDto(domainObj.getId());
+    }
+
+    @Override
+    public Avaliacao toDomain(AvaliacaoRequestDto avaliacaoRequestDto) {
+        return new Avaliacao(
+                avaliacaoRequestDto.reservaId(),
+                avaliacaoRequestDto.nota(),
+                avaliacaoRequestDto.comentario()
+        );
+    }
+
+    @Override
+    public void updateDomainFromDto(Avaliacao domainObj, AvaliacaoRequestDto avaliacaoRequestDto) {
+        domainObj.setNota(avaliacaoRequestDto.nota());
+        domainObj.setComentario(avaliacaoRequestDto.comentario());
+    }
+}

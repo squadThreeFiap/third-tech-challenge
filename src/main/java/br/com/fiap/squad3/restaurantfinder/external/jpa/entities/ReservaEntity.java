@@ -40,4 +40,8 @@ public class ReservaEntity {
 
     @Enumerated(EnumType.STRING)
     private StatusReserva status;
+
+    public ReservaEntity(Long id) {
+        this.id = id;
+    }
 }

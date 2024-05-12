@@ -19,4 +19,6 @@ public interface ReservaGateway {
             LocalDateTime dataHoraInicio,
             LocalDateTime dataHoraFim
     );
+
+    Reserva buscarPeloId(Long id);
 }
