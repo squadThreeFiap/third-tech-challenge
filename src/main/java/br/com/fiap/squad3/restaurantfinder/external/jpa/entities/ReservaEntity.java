@@ -20,12 +20,12 @@ public class ReservaEntity {
     private Long id;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuarioEntity;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
