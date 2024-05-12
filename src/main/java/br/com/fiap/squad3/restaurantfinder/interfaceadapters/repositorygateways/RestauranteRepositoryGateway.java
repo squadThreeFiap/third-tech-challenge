@@ -24,4 +24,15 @@ public class RestauranteRepositoryGateway implements RestauranteGateway {
         RestauranteEntity restauranteEntitySalvo = this.restauranteRepository.save(restauranteEntity);
         return this.restauranteEntityConverter.toDomainObj(restauranteEntitySalvo);
     }
+
+    @Override
+    public Boolean verificarSeExiste(Long id) {
+        return this.restauranteRepository.existsById(id);
+    }
+
+    @Override
+    public Restaurante buscarPeloId(Long id) {
+        RestauranteEntity restauranteEncontrado = this.restauranteRepository.getReferenceById(id);
+        return this.restauranteEntityConverter.toDomainObj(restauranteEncontrado);
+    }
 }
