@@ -1,20 +1,18 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.dtos;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-public record AvaliacaoDto(
-        @Schema(hidden = true)
-        Long id,
-        String nome,
-        String comentario,
+public record AvaliacaoRequestDto(
+        @NotNull
+        Long reservaId,
 
         @NotNull
         @Min(1)
         @Max(5)
-        Integer nota,
-        Long restauranteId
+        short nota,
+
+        String comentario
 ) {
 }
