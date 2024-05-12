@@ -64,11 +64,11 @@ public class ReservaUseCase {
     }
 
     private void validarConsistenciaDoHorarioDoAgendamento(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        if(!verificaSeDataHoraEstaNoFuturo(dataHoraInicio)){
+        if (!verificaSeDataHoraEstaNoFuturo(dataHoraInicio)) {
             throw new IllegalArgumentException("Data de início da reserva não pode estar no passado.");
         }
 
-        if(!verificaSeDataHoraEstaNoFuturo(dataHoraFim)){
+        if (!verificaSeDataHoraEstaNoFuturo(dataHoraFim)) {
             throw new IllegalArgumentException("Data de fim da reserva não pode estar no passado.");
         }
 
