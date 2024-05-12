@@ -7,24 +7,22 @@ import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.AvaliacaoRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.AvaliacaoEntityConverter;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.ReservaEntityConverter;
+
+import java.util.Optional;
 
 public class AvaliacaoRepositoryGateway implements AvaliacaoGateway {
     private final ReservaRepository reservaRepository;
     private final AvaliacaoRepository avaliacaoRepository;
 
-    private final ReservaEntityConverter reservaEntityConverter;
     private final AvaliacaoEntityConverter avaliacaoEntityConverter;
 
     public AvaliacaoRepositoryGateway(
             ReservaRepository reservaRepository,
             AvaliacaoRepository avaliacaoRepository,
-            ReservaEntityConverter reservaEntityConverter,
             AvaliacaoEntityConverter avaliacaoEntityConverter
     ) {
         this.reservaRepository = reservaRepository;
         this.avaliacaoRepository = avaliacaoRepository;
-        this.reservaEntityConverter = reservaEntityConverter;
         this.avaliacaoEntityConverter = avaliacaoEntityConverter;
     }
 
@@ -42,7 +40,12 @@ public class AvaliacaoRepositoryGateway implements AvaliacaoGateway {
 
     @Override
     public Avaliacao buscarPeloIdDaReserva(Long idReserva) {
-        AvaliacaoEntity avaliacaoEntity = avaliacaoRepository.findByReservaId(idReserva);
-        return avaliacaoEntityConverter.toDomainObj(avaliacaoEntity);
+        Optional<AvaliacaoEntity> avaliacaoEntity = avaliacaoRepository.findByReservaEntityId(idReserva);
+
+        if (avaliacaoEntity.isPresent()) {
+            return avaliacaoEntityConverter.toDomainObj(avaliacaoEntity.get());
+        }
+
+        return null;
     }
 }

@@ -4,7 +4,9 @@ import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.AvaliacaoEntity
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface AvaliacaoRepository extends JpaRepository<AvaliacaoEntity, Long> {
-    AvaliacaoEntity findByReservaId(Long idReserva);
+    Optional<AvaliacaoEntity> findByReservaEntityId(Long idReserva);
 }
