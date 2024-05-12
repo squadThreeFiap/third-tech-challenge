@@ -23,6 +23,7 @@ public class UsuarioEntity {
     private String cpf;
 
     @NotNull
+    @Column(length = 100)
     private String nome;
 
     @NotNull
