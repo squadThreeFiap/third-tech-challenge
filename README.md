@@ -9,7 +9,7 @@
 - [x] Reserva de Mesas:  
   - Os **usuários** podem fazer **reservas** para _datas_ e _horários específicos_.
 
-- [ ] Avaliações e Comentários:  
+- [x] Avaliações e Comentários:  
   - Após a visita, os **usuários** podem avaliar o **restaurante** e deixar comentários sobre sua experiência.
 
 - [ ] Busca de **Restaurantes**:  
