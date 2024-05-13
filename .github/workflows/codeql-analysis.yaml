@@ -72,7 +72,7 @@ jobs:
           
   covarege:
     name: covarege
-    needs: build
+    needs: teste
     runs-on: ubuntu-latest
     permissions:
       contents: write
