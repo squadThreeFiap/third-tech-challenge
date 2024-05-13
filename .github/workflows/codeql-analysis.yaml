@@ -119,7 +119,7 @@ jobs:
 
   security:
     name: security
-    needs: covarege
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       actions: read
