@@ -1,5 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.application.entities;
 
+import mocks.UsuarioMock;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -8,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UsuarioTest {
+
+    private Usuario usuario;
+
+    @BeforeEach
+    void setUp() {
+        usuario = new UsuarioMock();
+    }
 
     @Test
     void testGettersAndSetters() {
@@ -24,36 +33,31 @@ class UsuarioTest {
 
     @Test
     void testSetCpfNull() {
-        Usuario usuario = new Usuario(1L, null, "Fulano", "11", "987654321", "fulano@example.com", LocalDate.now());
-
         assertThrows(IllegalArgumentException.class, () -> usuario.setCpf(null));
+        assertThrows(IllegalArgumentException.class, () -> new Usuario(1L, null, "Fulano", "11", "987654321", "fulano@example.com", LocalDate.now()));
     }
 
     @Test
     void testSetNomeNull() {
-        Usuario usuario = new Usuario(1L, "12345678900", null, "11", "987654321", "fulano@example.com", LocalDate.now());
-
         assertThrows(IllegalArgumentException.class, () -> usuario.setNome(null));
+        assertThrows(IllegalArgumentException.class, () -> new Usuario(1L, "12345678900", null, "11", "987654321", "fulano@example.com", LocalDate.now()));
     }
 
     @Test
     void testSetDddNull() {
-        Usuario usuario = new Usuario(1L, "12345678900", "Fulano", null, "987654321", "fulano@example.com", LocalDate.now());
-
         assertThrows(IllegalArgumentException.class, () -> usuario.setDdd(null));
+        assertThrows(IllegalArgumentException.class, () -> new Usuario(1L, "12345678900", "Fulano", null, "987654321", "fulano@example.com", LocalDate.now()));
     }
 
     @Test
     void testSetTelefoneNull() {
-        Usuario usuario = new Usuario(1L, "12345678900", "Fulano", "11", null, "fulano@example.com", LocalDate.now());
-
         assertThrows(IllegalArgumentException.class, () -> usuario.setTelefone(null));
+        assertThrows(IllegalArgumentException.class, () -> new Usuario(1L, "12345678900", "Fulano", "11", null, "fulano@example.com", LocalDate.now()));
     }
 
     @Test
     void testSetEmailNull() {
-        Usuario usuario = new Usuario(1L, "12345678900", "Fulano", "11", "987654321", null, LocalDate.now());
-
         assertThrows(IllegalArgumentException.class, () -> usuario.setEmail(null));
+        assertThrows(IllegalArgumentException.class, () -> new Usuario(1L, "12345678900", "Fulano", "11", "987654321", null, LocalDate.now()));
     }
 }

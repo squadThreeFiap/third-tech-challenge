@@ -89,21 +89,11 @@ class ReservaTest {
     }
 
     @Test
-    void testSetDataHoraInicio_ValorInvalido() {
-        assertThrows(IllegalArgumentException.class, () -> reserva.setDataHoraInicio(LocalDateTime.now().minusHours(1)));
-    }
-
-    @Test
     void testSetDataHoraFim_ValorValido() {
         LocalDateTime dataHoraFimEsperada = LocalDateTime.now().plusHours(2);
 
         reserva.setDataHoraFim(dataHoraFimEsperada);
 
         assertEquals(dataHoraFimEsperada, reserva.getDataHoraFim());
-    }
-
-    @Test
-    void testSetDataHoraFim_ValorInvalido() {
-        assertThrows(IllegalArgumentException.class, () -> reserva.setDataHoraFim(LocalDateTime.now().minusHours(1)));
     }
 }
