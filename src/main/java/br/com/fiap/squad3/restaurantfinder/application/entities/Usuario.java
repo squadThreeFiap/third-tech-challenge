@@ -56,8 +56,8 @@ public class Usuario {
     }
 
     public void setNome(String nome) {
-        if (nome == null) {
-            throw new IllegalArgumentException("O campo 'nome' não pode ser nulo.");
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("O campo 'nome' não pode estar nulo/vazio.");
         }
 
         if (nome.length() == TAMANHO_MAXIMO_NOME) {
