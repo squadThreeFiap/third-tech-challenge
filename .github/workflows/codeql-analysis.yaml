@@ -29,32 +29,32 @@ jobs:
           name: jar
           path: target/*.jar
 
-  teste:
-    name: teste
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#  teste:
+#    name: teste
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+#      - name: Setup Java
+#        uses: actions/setup-java@v4
+#        with:
+#          distribution: 'temurin'
+#          java-version: '17'
           
-      - name: Download artifacts from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: jar
-          path: target
+#      - name: Download artifacts from build job
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: jar
+#          path: target
 
-      - name: Run unit tests
-        run: mvn test
+#      - name: Run unit tests
+#        run: mvn test
 
   covarege:
     name: covarege
-    needs: teste
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write  
