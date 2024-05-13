@@ -1,6 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
+import br.com.fiap.squad3.restaurantfinder.application.entities.ReservaDetalhada;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
@@ -78,6 +79,17 @@ public class ReservaRepositoryGateway implements ReservaGateway {
 
         if(reserva.isPresent()) {
             return reservaEntityConverter.toDomainObj(reserva.get());
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ReservaDetalhada> buscarDetalhesPeloIdDoRestaurante(Long idRestaurante) {
+        Optional<List<ReservaEntity>> reservas = this.reservaRepository.findAllByRestauranteEntityId(idRestaurante);
+
+        if(reservas.isPresent()) {
+            return reservas.get().stream().map(reservaEntityConverter::toDetailedDomainObj).toList();
         }
 
         return null;
