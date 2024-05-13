@@ -24,4 +24,12 @@ public interface ReservaGateway {
     Reserva buscarPeloId(Long id);
 
     List<ReservaDetalhada> buscarDetalhesPeloIdDoRestaurante(Long idRestaurante);
+
+    List<ReservaDetalhada> buscarDetalhesPeloIdDoRestaurante(
+            Long idRestaurante,
+            int pagina,
+            int numeroItensPorPagina,
+            String ordenarPor,
+            boolean ordemCrescente
+    );
 }

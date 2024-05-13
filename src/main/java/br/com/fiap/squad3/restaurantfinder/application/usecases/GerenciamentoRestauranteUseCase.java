@@ -21,6 +21,24 @@ public class GerenciamentoRestauranteUseCase {
         return reservaGateway.buscarDetalhesPeloIdDoRestaurante(idRestaurante);
     }
 
+    public List<ReservaDetalhada> visualizar(
+            Long idRestaurante,
+            int pagina,
+            int numeroItensPorPagina,
+            String ordenarPor,
+            boolean ordemCrescente
+    ) {
+        validaSeRestauranteExiste(idRestaurante);
+
+        return reservaGateway.buscarDetalhesPeloIdDoRestaurante(
+                idRestaurante,
+                pagina,
+                numeroItensPorPagina,
+                ordenarPor,
+                ordemCrescente
+        );
+    }
+
     private void validaSeRestauranteExiste(Long idRestaurante) {
         if (!restauranteGateway.verificarSeExiste(idRestaurante)) {
             throw new IllegalArgumentException("Restaurante não encontrado.");

@@ -8,6 +8,9 @@ import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaReposi
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.ReservaEntityConverter;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -77,7 +80,7 @@ public class ReservaRepositoryGateway implements ReservaGateway {
     public Reserva buscarPeloId(Long id) {
         Optional<ReservaEntity> reserva = this.reservaRepository.findById(id);
 
-        if(reserva.isPresent()) {
+        if (reserva.isPresent()) {
             return reservaEntityConverter.toDomainObj(reserva.get());
         }
 
@@ -88,7 +91,33 @@ public class ReservaRepositoryGateway implements ReservaGateway {
     public List<ReservaDetalhada> buscarDetalhesPeloIdDoRestaurante(Long idRestaurante) {
         Optional<List<ReservaEntity>> reservas = this.reservaRepository.findAllByRestauranteEntityId(idRestaurante);
 
-        if(reservas.isPresent()) {
+        if (reservas.isPresent()) {
+            return reservas.get().stream().map(reservaEntityConverter::toDetailedDomainObj).toList();
+        }
+
+        return null;
+    }
+
+    public List<ReservaDetalhada> buscarDetalhesPeloIdDoRestaurante(
+            Long idRestaurante,
+            int pagina,
+            int numeroItensPorPagina,
+            String ordenarPor,
+            boolean ordemCrescente
+    ) {
+        Sort sort = Sort.by(ordenarPor);
+        Pageable paging = PageRequest.of(
+                pagina,
+                numeroItensPorPagina,
+                ordemCrescente ? sort.ascending() : sort.descending()
+        );
+
+        Optional<List<ReservaEntity>> reservas = this.reservaRepository.findAllByRestauranteEntityId(
+                idRestaurante,
+                paging
+        );
+
+        if (reservas.isPresent()) {
             return reservas.get().stream().map(reservaEntityConverter::toDetailedDomainObj).toList();
         }
 

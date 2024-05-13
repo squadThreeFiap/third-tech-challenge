@@ -60,6 +60,29 @@ public class RestauranteController {
         return ResponseEntity.ok(new DataWrapperDto(reservasDoRestauranteResponse));
     }
 
+    @GetMapping("/{idRestaurante}/reservas/paginacao")
+    public ResponseEntity<DataWrapperDto> findReservationsByRestaurantIdPaginated(
+            @PathVariable Long idRestaurante,
+            @RequestParam(name = "pagina", defaultValue = "0") int pagina,
+            @RequestParam(name = "numeroItensPorPagina", defaultValue = "3") int numeroItensPorPagina,
+            @RequestParam(name = "ordenarPor", defaultValue = "dataHoraInicio") String ordenarPor,
+            @RequestParam(name = "ordemCrescente", defaultValue = "false") boolean ordemCrescente
+    ) {
+        List<ReservaDetalhada> reservasDoRestaurante = gerenciamentoRestauranteUseCase.visualizar(
+                idRestaurante,
+                pagina,
+                numeroItensPorPagina,
+                ordenarPor,
+                ordemCrescente
+        );
+
+        List<ReservaDetalhadaResponseDto> reservasDoRestauranteResponse = reservasDoRestaurante.stream()
+                .map(reservaDtoConverter::toDetailedResponse)
+                .toList();
+
+        return ResponseEntity.ok(new DataWrapperDto(reservasDoRestauranteResponse));
+    }
+
 //    @PutMapping(
 //            value = "/{id}",
 //            produces = {"application/json", "application/xml"},
