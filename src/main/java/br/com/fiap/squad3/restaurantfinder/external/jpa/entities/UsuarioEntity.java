@@ -19,16 +19,19 @@ public class UsuarioEntity {
     private Long id;
 
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true, length = 11)
     private String cpf;
 
     @NotNull
+    @Column(length = 100)
     private String nome;
 
     @NotNull
+    @Column(length = 2)
     private String ddd;
 
     @NotNull
+    @Column(length = 8)
     private String telefone;
 
     @NotNull
@@ -40,5 +43,9 @@ public class UsuarioEntity {
     @PrePersist
     protected void onCreate() {
         dataCadastro = LocalDate.now();
+    }
+
+    public UsuarioEntity(Long id) {
+        this.id = id;
     }
 }

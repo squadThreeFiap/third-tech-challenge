@@ -1,31 +1,42 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
 
+import br.com.fiap.squad3.restaurantfinder.application.entities.ReservaDetalhada;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
-import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.RestauranteDtoConverter;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.VizualizarReservasUseCase;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.DataWrapperDto;
+import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.ReservaDetalhadaResponseDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteResponseDto;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.ReservaDtoConverter;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.RestauranteDtoConverter;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/restaurante")
 public class RestauranteController {
     private final CadastroRestauranteUseCase cadastroRestauranteUseCase;
+    private final VizualizarReservasUseCase vizualizarReservasUseCase;
     private final RestauranteDtoConverter restauranteDtoConverter;
+    private final ReservaDtoConverter reservaDtoConverter;
+
 
     public RestauranteController(
             CadastroRestauranteUseCase cadastroRestauranteUseCase,
-            RestauranteDtoConverter restauranteDtoConverter
+            VizualizarReservasUseCase vizualizarReservasUseCase,
+            RestauranteDtoConverter restauranteDtoConverter,
+            ReservaDtoConverter reservaDtoConverter
     ) {
         this.cadastroRestauranteUseCase = cadastroRestauranteUseCase;
+        this.vizualizarReservasUseCase = vizualizarReservasUseCase;
         this.restauranteDtoConverter = restauranteDtoConverter;
+        this.reservaDtoConverter = reservaDtoConverter;
     }
 
     @PostMapping()
@@ -36,6 +47,40 @@ public class RestauranteController {
         RestauranteResponseDto restauranteCadastradoResponse = restauranteDtoConverter.toResponse(restauranteCadastrado);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restauranteCadastradoResponse);
+    }
+
+    @GetMapping("/{idRestaurante}/reservas")
+    public ResponseEntity<DataWrapperDto> findReservationsByRestaurantId(@PathVariable Long idRestaurante) {
+        List<ReservaDetalhada> reservasDoRestaurante = vizualizarReservasUseCase.visualizar(idRestaurante);
+
+        List<ReservaDetalhadaResponseDto> reservasDoRestauranteResponse = reservasDoRestaurante.stream()
+                .map(reservaDtoConverter::toDetailedResponse)
+                .toList();
+
+        return ResponseEntity.ok(new DataWrapperDto(reservasDoRestauranteResponse));
+    }
+
+    @GetMapping("/{idRestaurante}/reservas/paginacao")
+    public ResponseEntity<DataWrapperDto> findReservationsByRestaurantIdPaginated(
+            @PathVariable Long idRestaurante,
+            @RequestParam(name = "pagina", defaultValue = "0") int pagina,
+            @RequestParam(name = "numeroItensPorPagina", defaultValue = "3") int numeroItensPorPagina,
+            @RequestParam(name = "ordenarPor", defaultValue = "dataHoraInicio") String ordenarPor,
+            @RequestParam(name = "ordemCrescente", defaultValue = "false") boolean ordemCrescente
+    ) {
+        List<ReservaDetalhada> reservasDoRestaurante = vizualizarReservasUseCase.visualizar(
+                idRestaurante,
+                pagina,
+                numeroItensPorPagina,
+                ordenarPor,
+                ordemCrescente
+        );
+
+        List<ReservaDetalhadaResponseDto> reservasDoRestauranteResponse = reservasDoRestaurante.stream()
+                .map(reservaDtoConverter::toDetailedResponse)
+                .toList();
+
+        return ResponseEntity.ok(new DataWrapperDto(reservasDoRestauranteResponse));
     }
 
 //    @PutMapping(

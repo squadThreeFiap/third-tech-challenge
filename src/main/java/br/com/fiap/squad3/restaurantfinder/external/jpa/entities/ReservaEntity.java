@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,12 +20,12 @@ public class ReservaEntity {
     private Long id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuarioEntity;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
@@ -39,4 +40,8 @@ public class ReservaEntity {
 
     @Enumerated(EnumType.STRING)
     private StatusReserva status;
+
+    public ReservaEntity(Long id) {
+        this.id = id;
+    }
 }

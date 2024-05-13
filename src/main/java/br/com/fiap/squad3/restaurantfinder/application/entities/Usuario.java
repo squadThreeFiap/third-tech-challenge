@@ -3,6 +3,8 @@ package br.com.fiap.squad3.restaurantfinder.application.entities;
 import java.time.LocalDate;
 
 public class Usuario {
+    public final int TAMANHO_MAXIMO_NOME = 100;
+
     private Long id;
     private String cpf;
     private String nome;
@@ -54,9 +56,15 @@ public class Usuario {
     }
 
     public void setNome(String nome) {
-        if (nome == null) {
-            throw new IllegalArgumentException("O campo 'nome' não pode ser nulo.");
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("O campo 'nome' não pode estar nulo/vazio.");
         }
+
+        if (nome.length() == TAMANHO_MAXIMO_NOME) {
+            throw new IllegalArgumentException("O campo 'nome' deve ter no máximo " +
+                    TAMANHO_MAXIMO_NOME + " caracteres.");
+        }
+
         this.nome = nome;
     }
 

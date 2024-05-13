@@ -2,7 +2,6 @@ package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Usuario;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -31,12 +30,12 @@ class CadastroUsuarioUseCaseTest {
     void testCadastrarNovoUsuario() {
         Usuario novoUsuario = new Usuario(null, "12345678900", "Fulano", "11", "987654321", "fulano@example.com", LocalDate.now());
 
-        when(usuarioGateway.verificarSeExiste(novoUsuario.getCpf())).thenReturn(false);
+        when(usuarioGateway.verificarSeExistePeloCpf(novoUsuario.getCpf())).thenReturn(false);
         when(usuarioGateway.cadastrar(novoUsuario)).thenReturn(novoUsuario);
 
         Usuario resultado = cadastroUsuarioUseCase.cadastrar(novoUsuario);
 
-        verify(usuarioGateway, times(1)).verificarSeExiste(novoUsuario.getCpf());
+        verify(usuarioGateway, times(1)).verificarSeExistePeloCpf(novoUsuario.getCpf());
         verify(usuarioGateway, times(1)).cadastrar(novoUsuario);
     }
 
@@ -44,10 +43,10 @@ class CadastroUsuarioUseCaseTest {
     void testCadastrarUsuarioExistente() {
         Usuario usuarioExistente = new Usuario(1L, "12345678900", "Fulano", "11", "987654321", "fulano@example.com", LocalDate.now());
 
-        when(usuarioGateway.verificarSeExiste(usuarioExistente.getCpf())).thenReturn(true);
+        when(usuarioGateway.verificarSeExistePeloCpf(usuarioExistente.getCpf())).thenReturn(true);
 
         assertThrows(IllegalArgumentException.class, () -> cadastroUsuarioUseCase.cadastrar(usuarioExistente));
 
-        verify(usuarioGateway, times(1)).verificarSeExiste(usuarioExistente.getCpf());
+        verify(usuarioGateway, times(1)).verificarSeExistePeloCpf(usuarioExistente.getCpf());
     }
 }
