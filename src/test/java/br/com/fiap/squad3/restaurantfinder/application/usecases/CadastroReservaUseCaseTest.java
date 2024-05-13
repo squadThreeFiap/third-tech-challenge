@@ -22,10 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-class ReservaUseCaseTest {
+class CadastroReservaUseCaseTest {
 
     @InjectMocks
-    private ReservaUseCase reservaUseCase;
+    private CadastroReservaUseCase cadastroReservaUseCase;
 
     @Mock
     private UsuarioGateway usuarioGateway;
@@ -41,7 +41,7 @@ class ReservaUseCaseTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        reservaUseCase = new ReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
+        cadastroReservaUseCase = new CadastroReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
 
         LocalDateTime dataHoraInicio = LocalDateTime.now().plusHours(1);
         Reserva reservaValida = new Reserva(1L, 1L, 2, dataHoraInicio, dataHoraInicio.plusHours(2));
@@ -71,7 +71,7 @@ class ReservaUseCaseTest {
         );
         when(reservaGateway.cadastrar(any(Reserva.class))).thenReturn(reservaCadastrada);
 
-        Reserva result = reservaUseCase.cadastrar(reserva);
+        Reserva result = cadastroReservaUseCase.cadastrar(reserva);
 
         assertNotNull(result);
         assertEquals(idReservaEsperado, result.getId());
@@ -90,7 +90,7 @@ class ReservaUseCaseTest {
         reserva.setDataHoraInicio(dataHoraInicial);
         reserva.setDataHoraFim(dataHoraInicial.plusDays(1));  // Hora final no dia seguinte
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -100,7 +100,7 @@ class ReservaUseCaseTest {
         reserva.setDataHoraInicio(dataHoraInicial.plusHours(3)); // Início após o fim
         reserva.setDataHoraFim(dataHoraInicial);
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -110,7 +110,7 @@ class ReservaUseCaseTest {
         reserva.setDataHoraInicio(dataHoraInicial);
         reserva.setDataHoraFim(dataHoraInicial.plusMinutes(10)); // Permanêcencia menor que a mínima
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -121,10 +121,10 @@ class ReservaUseCaseTest {
         LocalDateTime dataHoraInicial = LocalDateTime.now();
 
         reserva.setDataHoraInicio(dataHoraInicial);
-        Integer permanenciaEmExcesso = ReservaUseCase.PERMANCENCIA_MAXIMA + 1;
+        Integer permanenciaEmExcesso = CadastroReservaUseCase.PERMANCENCIA_MAXIMA + 1;
         reserva.setDataHoraFim(dataHoraInicial.plusMinutes(permanenciaEmExcesso)); // Permanêcencia menor que a mínima
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -132,7 +132,7 @@ class ReservaUseCaseTest {
         when(usuarioGateway.verificarSeExistePeloId(reserva.getIdUsuario())).thenReturn(false);
         when(restauranteGateway.verificarSeExiste(reserva.getIdRestaurante())).thenReturn(true);
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -140,7 +140,7 @@ class ReservaUseCaseTest {
         when(usuarioGateway.verificarSeExistePeloId(reserva.getIdUsuario())).thenReturn(true);
         when(restauranteGateway.verificarSeExiste(reserva.getIdRestaurante())).thenReturn(false);
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -163,7 +163,7 @@ class ReservaUseCaseTest {
                 Arrays.asList(reservaDoUsuario) // Conflito de reservas
         );
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 
     @Test
@@ -201,6 +201,6 @@ class ReservaUseCaseTest {
                 Arrays.asList(new ReservaMock()) // Restaurante lotado
         );
 
-        assertThrows(IllegalArgumentException.class, () -> reservaUseCase.cadastrar(reserva));
+        assertThrows(IllegalArgumentException.class, () -> cadastroReservaUseCase.cadastrar(reserva));
     }
 }

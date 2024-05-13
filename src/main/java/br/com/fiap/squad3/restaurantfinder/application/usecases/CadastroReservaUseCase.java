@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ReservaUseCase {
+public class CadastroReservaUseCase {
     public static final int PERMANCENCIA_MINIMA = 1;
     public static final int PERMANCENCIA_MAXIMA = 5;
 
@@ -19,7 +19,7 @@ public class ReservaUseCase {
     private final RestauranteGateway restauranteGateway;
     private final ReservaGateway reservaGateway;
 
-    public ReservaUseCase(
+    public CadastroReservaUseCase(
             UsuarioGateway usuarioGateway,
             RestauranteGateway restauranteGateway,
             ReservaGateway reservaGateway

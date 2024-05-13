@@ -10,11 +10,14 @@ spring:
     username: admin
     password: admin123!
     driver-class-name: org.postgresql.Driver
+  sql:
+      init:
+        mode: always # never | always | embbedded
   jpa:
     hibernate:
-      ddl-auto: update
-      #ddl-auto: create-drop
+      ddl-auto: create-drop # none | update |  create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    defer-datasource-initialization: true # true = lazy data.sql (jsut seed) | false = data.sql first (also ddl)

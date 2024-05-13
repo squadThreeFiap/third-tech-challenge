@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
-import br.com.fiap.squad3.restaurantfinder.application.usecases.ReservaUseCase;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroReservaUseCase;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.ReservaRequestDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.ReservaResponsetDto;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.ReservaDtoConverter;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/reserva")
 public class ReservaController {
-    private final ReservaUseCase reservaUseCase;
+    private final CadastroReservaUseCase cadastroReservaUseCase;
     private final ReservaDtoConverter reservaDtoConverter;
 
-    public ReservaController(ReservaUseCase reservaUseCase, ReservaDtoConverter reservaDtoConverter) {
-        this.reservaUseCase = reservaUseCase;
+    public ReservaController(CadastroReservaUseCase cadastroReservaUseCase, ReservaDtoConverter reservaDtoConverter) {
+        this.cadastroReservaUseCase = cadastroReservaUseCase;
         this.reservaDtoConverter = reservaDtoConverter;
     }
 
@@ -29,7 +29,7 @@ public class ReservaController {
     @Transactional
     public ResponseEntity<ReservaResponsetDto> save(@Valid @RequestBody ReservaRequestDto reservaRequestDto) {
         Reserva reserva = reservaDtoConverter.toDomain(reservaRequestDto);
-        Reserva reservaCadastrada = reservaUseCase.cadastrar(reserva);
+        Reserva reservaCadastrada = cadastroReservaUseCase.cadastrar(reserva);
         ReservaResponsetDto reservaCadastradaResponse = reservaDtoConverter.toResponse(reservaCadastrada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaCadastradaResponse);

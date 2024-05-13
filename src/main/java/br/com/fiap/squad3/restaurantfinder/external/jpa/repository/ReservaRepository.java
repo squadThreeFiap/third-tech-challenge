@@ -1,6 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.external.jpa.repository;
 
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
@@ -32,4 +34,8 @@ public interface ReservaRepository extends JpaRepository<ReservaEntity, Long> {
             @Param("inicio") LocalDateTime dataHoraInicio,
             @Param("fim") LocalDateTime dataHoraFim
     );
+
+    Optional<List<ReservaEntity>> findAllByRestauranteEntityId(Long idRestaurante);
+
+    Optional<List<ReservaEntity>> findAllByRestauranteEntityId(Long idRestaurante, Pageable pageable);
 }
