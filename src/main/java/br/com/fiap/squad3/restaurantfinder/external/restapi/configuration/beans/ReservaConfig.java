@@ -9,6 +9,7 @@ import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRe
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.ReservaDtoConverter;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.ReservaEntityConverter;
+import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.UsuarioEntityConverter;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways.ReservaRepositoryGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,8 +41,8 @@ public class ReservaConfig {
     }
 
     @Bean
-    ReservaEntityConverter reservaEntityConverter() {
-        return new ReservaEntityConverter();
+    ReservaEntityConverter reservaEntityConverter(UsuarioEntityConverter usuarioEntityConverter) {
+        return new ReservaEntityConverter(usuarioEntityConverter);
     }
 
     @Bean
