@@ -167,8 +167,8 @@ jobs:
 
       - name: Build and push application docker image
         run: |
-          docker build -t squadthreefiap/second-tech-challeng .
-          docker push squadthreefiap/second-tech-challeng
+          docker build -t squadthreefiap/third-tech-challenge .
+          docker push squadthreefiap/third-tech-challenge
   
   deploy:
     name: deploy
