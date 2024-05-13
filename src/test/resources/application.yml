@@ -2,7 +2,7 @@ spring:
   application:
     name: my-application-test
   profiles:
-    active: dev
+    active: test
   webflux:
     cors:
       allowed-origins: "*"

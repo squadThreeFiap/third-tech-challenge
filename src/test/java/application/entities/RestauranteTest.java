@@ -11,21 +11,51 @@ class RestauranteTest {
 
     @BeforeEach
     void setUp() {
-        restaurante = new Restaurante(1L, "Restaurante", "Tipo Cozinha", 100);
+        restaurante = new Restaurante(1L, "Restaurante Teste", "Italiana", 10);
     }
 
     @Test
-    public void testValidacaoNome() {
-        fail("Teste pendente de implementação.");
+    void setNomeComSucesso() {
+        String novoNome = "Restaurante Novo Nome";
+        restaurante.setNome(novoNome);
+        assertEquals(novoNome, restaurante.getNome());
     }
 
     @Test
-    public void testValidacaoTipoCozinha() {
-        fail("Teste pendente de implementação.");
+    void setNomeComFalha() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            restaurante.setNome("");
+        });
+        assertEquals("Nome deve ser informado.", exception.getMessage());
     }
 
     @Test
-    public void testValidacaoCapacidade() {
-        fail("Teste pendente de implementação.");
+    void setTipoCozinhaComSucesso() {
+        String novoTipoCozinha = "Brasileira";
+        restaurante.setTipoCozinha(novoTipoCozinha);
+        assertEquals(novoTipoCozinha, restaurante.getTipoCozinha());
+    }
+
+    @Test
+    void setTipoCozinhaComFalha() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            restaurante.setTipoCozinha("");
+        });
+        assertEquals("Tipo de cozinha deve ser informada.", exception.getMessage());
+    }
+
+    @Test
+    void setCapacidadeComSucesso() {
+        Integer novaCapacidade = 20;
+        restaurante.setCapacidade(novaCapacidade);
+        assertEquals(novaCapacidade, restaurante.getCapacidade());
+    }
+
+    @Test
+    void setCapacidadeComFalha() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            restaurante.setCapacidade(0);
+        });
+        assertTrue(exception.getMessage().contains("Capacidade mínima é 1."));
     }
 }
