@@ -1,5 +1,9 @@
+
 # Third Tech Challenge
 > _Squad 3_
+
+![Coverage](./badges/jacoco.svg)
+![Branches](./badges/branches.svg)
 
 ## Restaurant Finder
 
