@@ -31,7 +31,7 @@ public class UsuarioEntity {
     private String ddd;
 
     @NotNull
-    @Column(length = 8)
+    @Column(length = 9)
     private String telefone;
 
     @NotNull
