@@ -15,7 +15,7 @@
 - [ ] Busca de **Restaurantes**:  
   - Os **usuários** podem buscar **restaurantes** por nome, localização ou tipo de cozinha.
 
-- [ ] Gerenciamento de **Reservas**:  
+- [x] Gerenciamento de **Reservas**:  
   - Os **restaurantes** podem gerenciar as **reservas**, visualizando e atualizando o status das mesas.
 
 ## Configuração de Ambiente
