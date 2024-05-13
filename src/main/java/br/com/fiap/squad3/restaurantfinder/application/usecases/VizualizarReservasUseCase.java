@@ -6,11 +6,11 @@ import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGatew
 
 import java.util.List;
 
-public class GerenciamentoRestauranteUseCase {
+public class VizualizarReservasUseCase {
     private final RestauranteGateway restauranteGateway;
     private final ReservaGateway reservaGateway;
 
-    public GerenciamentoRestauranteUseCase(RestauranteGateway restauranteGateway, ReservaGateway reservaGateway) {
+    public VizualizarReservasUseCase(RestauranteGateway restauranteGateway, ReservaGateway reservaGateway) {
         this.restauranteGateway = restauranteGateway;
         this.reservaGateway = reservaGateway;
     }

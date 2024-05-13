@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.controllers;
 import br.com.fiap.squad3.restaurantfinder.application.entities.ReservaDetalhada;
 import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
-import br.com.fiap.squad3.restaurantfinder.application.usecases.GerenciamentoRestauranteUseCase;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.VizualizarReservasUseCase;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.DataWrapperDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.ReservaDetalhadaResponseDto;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
@@ -22,19 +22,19 @@ import java.util.List;
 @RequestMapping("/restaurante")
 public class RestauranteController {
     private final CadastroRestauranteUseCase cadastroRestauranteUseCase;
-    private final GerenciamentoRestauranteUseCase gerenciamentoRestauranteUseCase;
+    private final VizualizarReservasUseCase vizualizarReservasUseCase;
     private final RestauranteDtoConverter restauranteDtoConverter;
     private final ReservaDtoConverter reservaDtoConverter;
 
 
     public RestauranteController(
             CadastroRestauranteUseCase cadastroRestauranteUseCase,
-            GerenciamentoRestauranteUseCase gerenciamentoRestauranteUseCase,
+            VizualizarReservasUseCase vizualizarReservasUseCase,
             RestauranteDtoConverter restauranteDtoConverter,
             ReservaDtoConverter reservaDtoConverter
     ) {
         this.cadastroRestauranteUseCase = cadastroRestauranteUseCase;
-        this.gerenciamentoRestauranteUseCase = gerenciamentoRestauranteUseCase;
+        this.vizualizarReservasUseCase = vizualizarReservasUseCase;
         this.restauranteDtoConverter = restauranteDtoConverter;
         this.reservaDtoConverter = reservaDtoConverter;
     }
@@ -51,7 +51,7 @@ public class RestauranteController {
 
     @GetMapping("/{idRestaurante}/reservas")
     public ResponseEntity<DataWrapperDto> findReservationsByRestaurantId(@PathVariable Long idRestaurante) {
-        List<ReservaDetalhada> reservasDoRestaurante = gerenciamentoRestauranteUseCase.visualizar(idRestaurante);
+        List<ReservaDetalhada> reservasDoRestaurante = vizualizarReservasUseCase.visualizar(idRestaurante);
 
         List<ReservaDetalhadaResponseDto> reservasDoRestauranteResponse = reservasDoRestaurante.stream()
                 .map(reservaDtoConverter::toDetailedResponse)
@@ -68,7 +68,7 @@ public class RestauranteController {
             @RequestParam(name = "ordenarPor", defaultValue = "dataHoraInicio") String ordenarPor,
             @RequestParam(name = "ordemCrescente", defaultValue = "false") boolean ordemCrescente
     ) {
-        List<ReservaDetalhada> reservasDoRestaurante = gerenciamentoRestauranteUseCase.visualizar(
+        List<ReservaDetalhada> reservasDoRestaurante = vizualizarReservasUseCase.visualizar(
                 idRestaurante,
                 pagina,
                 numeroItensPorPagina,

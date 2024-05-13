@@ -3,7 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.configuration.beans
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroRestauranteUseCase;
-import br.com.fiap.squad3.restaurantfinder.application.usecases.GerenciamentoRestauranteUseCase;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.VizualizarReservasUseCase;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.api.RestauranteDtoConverter;
 import br.com.fiap.squad3.restaurantfinder.interfaceadapters.converters.db.RestauranteEntityConverter;
@@ -19,11 +19,11 @@ public class RestauranteConfig {
     }
 
     @Bean
-    GerenciamentoRestauranteUseCase gerenciamentoRestauranteUseCase(
+    VizualizarReservasUseCase vizualizarReservasUseCase(
             RestauranteGateway restauranteGateway,
             ReservaGateway reservaGateway
     ) {
-        return new GerenciamentoRestauranteUseCase(restauranteGateway, reservaGateway);
+        return new VizualizarReservasUseCase(restauranteGateway, reservaGateway);
     }
 
     @Bean

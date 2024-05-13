@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-public class GerenciamentoRestauranteUseCaseTest {
+public class VizualizarReservasUseCaseTest {
     @Mock
     private RestauranteGateway restauranteGateway;
 
@@ -23,7 +23,7 @@ public class GerenciamentoRestauranteUseCaseTest {
     private ReservaGateway reservaGateway;
 
     @InjectMocks
-    private GerenciamentoRestauranteUseCase gerenciamentoRestauranteUseCase;
+    private VizualizarReservasUseCase vizualizarReservasUseCase;
 
     private List<ReservaDetalhada> reservas;
 
@@ -31,7 +31,7 @@ public class GerenciamentoRestauranteUseCaseTest {
     public void setup() {
         restauranteGateway = mock(RestauranteGateway.class);
         reservaGateway = mock(ReservaGateway.class);
-        gerenciamentoRestauranteUseCase = new GerenciamentoRestauranteUseCase(restauranteGateway, reservaGateway);
+        vizualizarReservasUseCase = new VizualizarReservasUseCase(restauranteGateway, reservaGateway);
 
         reservas = List.of(new ReservaDetalhadaMock());
     }
@@ -42,7 +42,7 @@ public class GerenciamentoRestauranteUseCaseTest {
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(true);
         when(reservaGateway.buscarDetalhesPeloIdDoRestaurante(idRestaurante)).thenReturn(reservas);
 
-        List<ReservaDetalhada> result = gerenciamentoRestauranteUseCase.visualizar(idRestaurante);
+        List<ReservaDetalhada> result = vizualizarReservasUseCase.visualizar(idRestaurante);
 
         assertEquals(reservas, result);
         verify(restauranteGateway).verificarSeExiste(idRestaurante);
@@ -54,7 +54,7 @@ public class GerenciamentoRestauranteUseCaseTest {
         Long idRestaurante = 10L;
         when(restauranteGateway.verificarSeExiste(idRestaurante)).thenReturn(false);
 
-        assertThrows(IllegalArgumentException.class, () -> gerenciamentoRestauranteUseCase.visualizar(idRestaurante));
+        assertThrows(IllegalArgumentException.class, () -> vizualizarReservasUseCase.visualizar(idRestaurante));
         verify(restauranteGateway, times(1)).verificarSeExiste(idRestaurante);
         verify(reservaGateway, never()).buscarDetalhesPeloIdDoRestaurante(idRestaurante);
     }
