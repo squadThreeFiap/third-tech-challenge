@@ -3,7 +3,6 @@ package br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
-import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.RestauranteEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.UsuarioRepository;
