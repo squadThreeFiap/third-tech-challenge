@@ -2,6 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.interfaceadapters.repositorygateways
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.application.entities.ReservaDetalhada;
+import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusReserva;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.entities.ReservaEntity;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
@@ -122,5 +123,19 @@ public class ReservaRepositoryGateway implements ReservaGateway {
         }
 
         return null;
+    }
+
+    @Override
+    public Boolean verificarSeExiste(Long id) {
+        return reservaRepository.existsById(id);
+    }
+
+    @Override
+    public Reserva alterarStatus(Long idReserva, StatusReserva novoStatus) {
+        ReservaEntity reservaEntity = this.reservaRepository.getReferenceById(idReserva);
+        reservaEntity.setStatus(novoStatus);
+
+        ReservaEntity reservaAlterada = this.reservaRepository.save(reservaEntity);
+        return reservaEntityConverter.toDomainObj(reservaAlterada);
     }
 }

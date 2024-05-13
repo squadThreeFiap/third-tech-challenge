@@ -3,6 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.external.restapi.configuration.beans
 import br.com.fiap.squad3.restaurantfinder.application.gateways.ReservaGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.RestauranteGateway;
 import br.com.fiap.squad3.restaurantfinder.application.gateways.UsuarioGateway;
+import br.com.fiap.squad3.restaurantfinder.application.usecases.AtualizaStatusReservaUseCase;
 import br.com.fiap.squad3.restaurantfinder.application.usecases.CadastroReservaUseCase;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.ReservaRepository;
 import br.com.fiap.squad3.restaurantfinder.external.jpa.repository.RestauranteRepository;
@@ -23,6 +24,11 @@ public class ReservaConfig {
             ReservaGateway reservaGateway
     ) {
         return new CadastroReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
+    }
+
+    @Bean
+    AtualizaStatusReservaUseCase atualizaStatusReservaUseCase(ReservaGateway reservaGateway) {
+        return new AtualizaStatusReservaUseCase(reservaGateway);
     }
 
     @Bean

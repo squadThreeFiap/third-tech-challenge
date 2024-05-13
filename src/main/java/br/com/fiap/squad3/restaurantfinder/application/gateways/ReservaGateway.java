@@ -2,6 +2,7 @@ package br.com.fiap.squad3.restaurantfinder.application.gateways;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Reserva;
 import br.com.fiap.squad3.restaurantfinder.application.entities.ReservaDetalhada;
+import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusReserva;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,4 +33,8 @@ public interface ReservaGateway {
             String ordenarPor,
             boolean ordemCrescente
     );
+
+    Boolean verificarSeExiste(Long id);
+
+    Reserva alterarStatus(Long idReserva, StatusReserva novoStatus);
 }
