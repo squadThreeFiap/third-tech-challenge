@@ -29,6 +29,47 @@ jobs:
           name: jar
           path: target/*.jar
 
+  teste:
+    name: teste
+    needs: build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          
+      - name: Download artifacts from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: jar
+          path: target
+
+      - name: Run unit tests
+        run: mvn test
+        env:
+          DB_URL: jdbc:postgresql://localhost:5432/testdb
+          DB_USER: user
+          DB_PASSWORD: password
+          
 #  teste:
 #    name: teste
 #    needs: build

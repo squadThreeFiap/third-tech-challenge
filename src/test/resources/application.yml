@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: my-application-test
+  profiles:
+    active: dev
+  webflux:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+  datasource:
+    url: ${BD_URL}
+    username: ${BD_USERNAME}
+    password: ${BD_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always # Opções: never, always, embedded
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # Opções: none, update, create, create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    defer-datasource-initialization: true # true = inicialização lazy de data.sql (apenas seed), false = executa data.sql primeiro (inclui ddl)
+server:
+  port: 8080
