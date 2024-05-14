@@ -1,6 +1,6 @@
 
 # Third Tech Challenge
-> _Squad 3_
+> _Squad 3_ [code base inicial](https://github.com/DiegoRFerraz/third-tech-challenge)
 
 ![Coverage](./badges/jacoco.svg)
 ![Branches](./badges/branches.svg)
@@ -30,3 +30,4 @@ docker compose up -d
 Após a execução do comando:
 - Postgres e pgAdmin4 em um container dedicado ao projeto
 - pgAdmin4 address: http://localhost:16543/browser/
+
