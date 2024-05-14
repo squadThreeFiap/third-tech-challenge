@@ -4,6 +4,7 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.Restaurante;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestauranteTest {
@@ -16,16 +17,21 @@ class RestauranteTest {
 
     @Test
     public void testValidacaoNome() {
-        fail("Teste pendente de implementação.");
+        assertThrows(IllegalArgumentException.class, () -> restaurante.setNome(null));
+        assertThrows(IllegalArgumentException.class, () -> restaurante.setNome(""));
+        assertEquals("Restaurante", restaurante.getNome());
     }
 
     @Test
     public void testValidacaoTipoCozinha() {
-        fail("Teste pendente de implementação.");
+        assertThrows(IllegalArgumentException.class, () -> restaurante.setNome(null));
+        assertThrows(IllegalArgumentException.class, () -> restaurante.setNome(""));
+        assertEquals("Tipo Cozinha", restaurante.getTipoCozinha());
     }
 
     @Test
     public void testValidacaoCapacidade() {
-        fail("Teste pendente de implementação.");
+        assertThrows(IllegalArgumentException.class, () -> restaurante.setCapacidade(0));
+        assertEquals(100, restaurante.getCapacidade());
     }
 }

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public record UsuarioRequestDto(
         @Schema(example = "33014076090")
         @CPF(message = "CPF inválido")
+        @NotBlank(message = "nome não pode ser branco")
         String cpf,
 
         @Schema(example = "João da Silva")

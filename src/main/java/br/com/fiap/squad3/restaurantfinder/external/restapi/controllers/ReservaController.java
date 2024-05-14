@@ -48,6 +48,6 @@ public class ReservaController {
     ) {
         atualizaStatusReservaUseCase.atualizar(idReserva, atualizaStatusReservaRequestDto.status());
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.accepted().build();
     }
 }
