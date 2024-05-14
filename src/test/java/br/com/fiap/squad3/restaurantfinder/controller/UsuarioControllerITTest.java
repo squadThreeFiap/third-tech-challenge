@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import java.time.LocalDate;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.collection.IsMapContaining.hasKey;
-import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UsuarioControllerITTest {
@@ -33,7 +31,6 @@ public class UsuarioControllerITTest {
         .when()
                 .post("/usuario")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.CREATED.value());
     }
 
@@ -47,7 +44,6 @@ public class UsuarioControllerITTest {
         .when()
                 .post("/usuario")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
@@ -61,7 +57,6 @@ public class UsuarioControllerITTest {
                 .when()
                 .post("/usuario")
                 .then()
-                .log().all()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
@@ -75,7 +70,6 @@ public class UsuarioControllerITTest {
                 .when()
                 .post("/usuario")
                 .then()
-                .log().all()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
