@@ -3,7 +3,6 @@ package br.com.fiap.squad3.restaurantfinder.controller;
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.DiaSemana;
 import br.com.fiap.squad3.restaurantfinder.external.restapi.dtos.RestauranteRequestDto;
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,10 +13,8 @@ import org.springframework.http.MediaType;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
-import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestauranteControllerITTest {
