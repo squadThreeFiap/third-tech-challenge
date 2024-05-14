@@ -44,7 +44,7 @@ class CadastroReservaUseCaseTest {
         cadastroReservaUseCase = new CadastroReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
 
         LocalDateTime dataHoraInicio = LocalDateTime.now().plusHours(1);
-        Reserva reservaValida = new Reserva(1L, 1L, 2, dataHoraInicio, dataHoraInicio.plusHours(2));
+        Reserva reservaValida = new Reserva(1L, 1L, 2, dataHoraInicio, dataHoraInicio.plusHours(1));
         reserva = reservaValida;
     }
 
