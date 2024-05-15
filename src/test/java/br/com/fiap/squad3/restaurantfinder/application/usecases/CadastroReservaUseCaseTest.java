@@ -43,7 +43,7 @@ class CadastroReservaUseCaseTest {
         MockitoAnnotations.openMocks(this);
         cadastroReservaUseCase = new CadastroReservaUseCase(usuarioGateway, restauranteGateway, reservaGateway);
 
-        LocalDateTime dataHoraInicio = LocalDateTime.now().plusHours(1);
+        LocalDateTime dataHoraInicio = LocalDateTime.of(2024, 06,25, 12,30,00);
         Reserva reservaValida = new Reserva(1L, 1L, 2, dataHoraInicio, dataHoraInicio.plusHours(2));
         reserva = reservaValida;
     }
