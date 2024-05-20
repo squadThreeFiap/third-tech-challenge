@@ -20,15 +20,15 @@ class UsuarioTest {
 
     @Test
     void testGettersAndSetters() {
-        Usuario usuario = new Usuario(1L, "12345678900", "Fulano", "11", "987654321", "fulano@example.com", LocalDate.now());
+        Usuario usuario = new Usuario(id, cpf, nome, ddd, telefone, email, dataCadastro);
 
-        assertEquals(1L, usuario.getId());
-        assertEquals("12345678900", usuario.getCpf());
-        assertEquals("Fulano", usuario.getNome());
-        assertEquals("11", usuario.getDdd());
-        assertEquals("987654321", usuario.getTelefone());
-        assertEquals("fulano@example.com", usuario.getEmail());
-        assertEquals(LocalDate.now(), usuario.getDataCadastro());
+        assertEquals(id, usuario.getId());
+        assertEquals(cpf, usuario.getCpf());
+        assertEquals(nome, usuario.getNome());
+        assertEquals(ddd, usuario.getDdd());
+        assertEquals(telefone, usuario.getTelefone());
+        assertEquals(email, usuario.getEmail());
+        assertEquals(dataCadastro, usuario.getDataCadastro());
     }
 
     @Test
