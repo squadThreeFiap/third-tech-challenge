@@ -3,6 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.application.entities;
 import mocks.AvaliacaoMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.TextoUtil;
 
 import java.util.Random;
 
@@ -60,20 +61,10 @@ class AvaliacaoTest {
 
     @Test
     void testSetComentario_TamanhoExedente() {
-        String comentarioLongo = criaTextoRandomico(avaliacao.TAMANHO_MAXIMO_COMENTARIO + 1);
+        String comentarioLongo = TextoUtil.criaTextoRandomico(avaliacao.TAMANHO_MAXIMO_COMENTARIO + 1);
 
         assertThrows(IllegalArgumentException.class, () -> avaliacao.setComentario(comentarioLongo));
     }
 
-    private String criaTextoRandomico(Integer tamanhoTexto) {
-        String caracteres = "   abcdefghijklm   nopqrstuvxwyz   ";
-        Random random = new Random();
-        String resultado = "";
 
-        while (resultado.length() < tamanhoTexto) {
-            char caractereRandom = caracteres.charAt(random.nextInt(caracteres.length()));
-            resultado += caractereRandom;
-        }
-        return resultado;
-    }
 }
