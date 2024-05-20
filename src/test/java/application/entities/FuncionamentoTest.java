@@ -2,47 +2,35 @@ package application.entities;
 
 import br.com.fiap.squad3.restaurantfinder.application.entities.Funcionamento;
 import br.com.fiap.squad3.restaurantfinder.application.entities.enums.DiaSemana;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FuncionamentoTest {
-    private Funcionamento funcionamento;
+    private Set<DiaSemana> dias = new HashSet(List.of(DiaSemana.SEGUNDA, DiaSemana.QUARTA, DiaSemana.SEXTA));
+    private LocalTime horaAbertura = LocalTime.of(9, 0);
+    private LocalTime horaEncerramento = LocalTime.of(18, 0);
 
-    @BeforeEach
-    void setUp() {
-        Set<DiaSemana> dias = new HashSet<>();
-        dias.add(DiaSemana.SEGUNDA);
-        dias.add(DiaSemana.QUARTA);
-        dias.add(DiaSemana.SEXTA);
+    @Test
+    void testGettersAndSetters() {
+        Funcionamento funcionamento = new Funcionamento(dias, horaAbertura, horaEncerramento);
 
-        LocalTime horaAbertura = LocalTime.of(9, 0);
-        LocalTime horaEncerramento = LocalTime.of(18, 0);
-
-        funcionamento = new Funcionamento(dias, horaAbertura, horaEncerramento);
+        assertEquals(dias, funcionamento.getDias());
+        assertEquals(horaAbertura, funcionamento.getHoraAbertura());
+        assertEquals(horaEncerramento, funcionamento.getHoraEncerramento());
     }
 
     @Test
     void testDiasDeFuncionamentoNaoPodemSerVazios() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Funcionamento(new HashSet<>(), LocalTime.now(), LocalTime.now())
+                () -> new Funcionamento(new HashSet<>(), horaAbertura, horaEncerramento)
         );
-    }
-
-    @Test
-    void testGetHoraAbertura() {
-        assertEquals(LocalTime.of(9, 0), funcionamento.getHoraAbertura());
-    }
-
-    @Test
-    void testGetHoraEncerramento() {
-        assertEquals(LocalTime.of(18, 0), funcionamento.getHoraEncerramento());
     }
 }
