@@ -1,4 +1,4 @@
-package application.usecases;
+package br.com.fiap.squad3.restaurantfinder.application.usecases;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
