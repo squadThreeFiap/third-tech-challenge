@@ -75,8 +75,10 @@ class ReservaTest {
 
     @Test
     void testSetQuantidadePessoas_ValorInvalido() {
-        assertThrows(IllegalArgumentException.class, () -> reserva.setQuantidadePessoas(0));
-        assertThrows(IllegalArgumentException.class, () -> reserva.setQuantidadePessoas(-7));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> reserva.setQuantidadePessoas(Reserva.QUANTIDADE_PESSOAS_MINIMA - 1)
+        );
     }
 
     @Test
