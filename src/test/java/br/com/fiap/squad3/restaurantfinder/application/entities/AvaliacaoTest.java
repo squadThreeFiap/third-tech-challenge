@@ -3,6 +3,7 @@ package br.com.fiap.squad3.restaurantfinder.application.entities;
 import mocks.AvaliacaoMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.TextoUtil;
 
 import java.util.Random;
 
@@ -12,19 +13,40 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AvaliacaoTest {
     private Avaliacao avaliacao;
 
+    Long id = 10L;
+    Long idReserva = 20L;
+    short nota = 3;
+    String comentario = "Este é um comentário válido.";
+
     @BeforeEach
     void setUp() {
         avaliacao = new AvaliacaoMock();
     }
 
+    @Test
+    void testConstrutor2() {
+        Avaliacao avaliacaoConstrutor2 = new Avaliacao(idReserva, nota, comentario);
+
+        assertEquals(idReserva, avaliacaoConstrutor2.getIdReserva());
+        assertEquals(nota, avaliacaoConstrutor2.getNota());
+        assertEquals(comentario, avaliacaoConstrutor2.getComentario());
+    }
+
+    @Test
+    void testConstrutor3() {
+        Avaliacao avaliacaoConstrutor3 = new Avaliacao(id, idReserva, nota, comentario);
+
+        assertEquals(id, avaliacaoConstrutor3.getId());
+        assertEquals(idReserva, avaliacaoConstrutor3.getIdReserva());
+        assertEquals(nota, avaliacaoConstrutor3.getNota());
+        assertEquals(comentario, avaliacaoConstrutor3.getComentario());
+    }
 
     @Test
     void testSetIdReserva_IdValido() {
-        Long idReservaEsperada = 20L;
+        avaliacao.setIdReserva(idReserva);
 
-        avaliacao.setIdReserva(idReservaEsperada);
-
-        assertEquals(idReservaEsperada, avaliacao.getIdReserva());
+        assertEquals(idReserva, avaliacao.getIdReserva());
     }
 
     @Test
@@ -36,44 +58,28 @@ class AvaliacaoTest {
 
     @Test
     void testSetNota_IntervaloValido() {
-        short notaEsperada = 3;
+        avaliacao.setNota(nota);
 
-        avaliacao.setNota(notaEsperada);
-
-        assertEquals(notaEsperada, avaliacao.getNota());
+        assertEquals(nota, avaliacao.getNota());
     }
 
     @Test
     void testSetNota_IntervaloInvalido() {
-        assertThrows(IllegalArgumentException.class, () -> avaliacao.setNota((short) 0));
-        assertThrows(IllegalArgumentException.class, () -> avaliacao.setNota((short) 6));
+        assertThrows(IllegalArgumentException.class, () -> avaliacao.setNota((short) (Avaliacao.NOTA_MINIMA - 1)));
+        assertThrows(IllegalArgumentException.class, () -> avaliacao.setNota((short) (Avaliacao.NOTA_MAXIMA + 1)));
     }
 
     @Test
     void testSetComentario_TamanhoValido() {
-        String comentarioEsperado = "Este é um comentário válido.";
+        avaliacao.setComentario(comentario);
 
-        avaliacao.setComentario(comentarioEsperado);
-
-        assertEquals(comentarioEsperado, avaliacao.getComentario());
+        assertEquals(comentario, avaliacao.getComentario());
     }
 
     @Test
     void testSetComentario_TamanhoExedente() {
-        String comentarioLongo = criaTextoRandomico(avaliacao.TAMANHO_MAXIMO_COMENTARIO + 1);
+        String comentarioLongo = TextoUtil.criaTextoRandomico(Avaliacao.TAMANHO_MAXIMO_COMENTARIO + 1);
 
         assertThrows(IllegalArgumentException.class, () -> avaliacao.setComentario(comentarioLongo));
-    }
-
-    private String criaTextoRandomico(Integer tamanhoTexto) {
-        String caracteres = "   abcdefghijklm   nopqrstuvxwyz   ";
-        Random random = new Random();
-        String resultado = "";
-
-        while (resultado.length() < tamanhoTexto) {
-            char caractereRandom = caracteres.charAt(random.nextInt(caracteres.length()));
-            resultado += caractereRandom;
-        }
-        return resultado;
     }
 }

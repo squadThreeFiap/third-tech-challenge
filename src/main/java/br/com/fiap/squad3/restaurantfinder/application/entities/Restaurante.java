@@ -1,7 +1,7 @@
 package br.com.fiap.squad3.restaurantfinder.application.entities;
 
 public class Restaurante {
-    private final int CAPACIDADE_MINIMA = 1;
+    public static final int CAPACIDADE_MINIMA = 1;
 
     private Long id;
     private String nome;

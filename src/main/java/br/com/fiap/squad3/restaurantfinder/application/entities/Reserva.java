@@ -5,7 +5,7 @@ import br.com.fiap.squad3.restaurantfinder.application.entities.enums.StatusRese
 import java.time.LocalDateTime;
 
 public class Reserva {
-    private final int QUANTIDADE_PESSOAS_MINIMA = 1;
+    public static final int QUANTIDADE_PESSOAS_MINIMA = 1;
 
     private Long id;
     private Long idUsuario;

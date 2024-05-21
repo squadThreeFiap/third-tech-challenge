@@ -1,9 +1,9 @@
 package br.com.fiap.squad3.restaurantfinder.application.entities;
 
 public class Avaliacao {
-    public final short NOTA_MAXIMA = 5;
-    public final short NOTA_MINIMA = 1;
-    public final Integer TAMANHO_MAXIMO_COMENTARIO = 250;
+    public static final short NOTA_MAXIMA = 5;
+    public static final short NOTA_MINIMA = 1;
+    public static final Integer TAMANHO_MAXIMO_COMENTARIO = 250;
 
     private Long id;
     private Long idReserva;

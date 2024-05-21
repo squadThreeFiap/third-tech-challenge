@@ -30,7 +30,7 @@ public class Localizacao {
             throw cepInvalido;
         }
 
-        if (cep.isBlank() || cep.length() != 8) {
+        if (cep.length() != 8) {
             throw cepInvalido;
         }
 
